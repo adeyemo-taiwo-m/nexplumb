@@ -18,20 +18,20 @@
             NEX<span style="color: var(--blue);">PLUMB</span>
         </a>
         
-        <div style="flex: 1; max-width: 600px; position: relative;">
+        <div class="hide-on-mobile" style="flex: 1; max-width: 600px; position: relative;">
             <i class="fas fa-search" style="position: absolute; left: 15px; top: 12px; color: var(--text-secondary);"></i>
             <input type="text" value="Plumbers in Lekki, Lagos" style="width: 100%; padding: 10px 10px 10px 45px; border-radius: 10px; border: 1px solid var(--border); outline: none; font-size: 0.95rem; font-weight: 500;">
         </div>
 
         <div style="margin-left: auto; display: flex; gap: 20px; align-items: center;">
-            <a href="#" style="color: var(--text-primary); text-decoration: none; font-weight: 600;">My Jobs</a>
+            <a href="#" class="hide-on-mobile" style="color: var(--text-primary); text-decoration: none; font-weight: 600;">My Jobs</a>
             <div style="width: 40px; height: 40px; background: var(--light-gray); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800;">JB</div>
         </div>
     </header>
 
-    <div style="display: grid; grid-template-columns: 320px 1fr; min-height: calc(100vh - 81px);">
+    <div class="stack-on-mobile" style="display: grid; grid-template-columns: 320px 1fr; min-height: calc(100vh - 81px);">
         <!-- Filters Sidebar -->
-        <aside style="padding: 40px; border-right: 1px solid var(--border); position: sticky; top: 81px; height: calc(100vh - 81px); overflow-y: auto;">
+        <aside class="hide-on-mobile" style="padding: 40px; border-right: 1px solid var(--border); position: sticky; top: 81px; height: calc(100vh - 81px); overflow-y: auto;">
             <h4 style="margin-bottom: 1.5rem;">Filters</h4>
             
             <div style="margin-bottom: 2.5rem;">
@@ -66,8 +66,8 @@
         </aside>
 
         <!-- Search Results Area -->
-        <main style="padding: 40px; background: var(--light-gray);">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+        <main style="padding: 20px; background: var(--light-gray);">
+            <div class="stack-on-mobile" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
                 <h2 style="font-size: 1.5rem;">24 Plumbers in Lekki</h2>
                 <div style="display: flex; gap: 10px; background: white; padding: 5px; border-radius: 10px; border: 1px solid var(--border);">
                     <button class="btn" style="padding: 8px 16px; background: var(--navy); color: white; font-size: 0.8rem;"><i class="fas fa-th-large"></i> Grid</button>
@@ -75,7 +75,7 @@
                 </div>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 24px;">
+            <div class="stack-on-mobile" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 24px;">
                 <!-- Artisan Card -->
                 <div class="card animate-up" style="padding: 0; overflow: hidden;">
                     <div style="display: flex; gap: 20px; padding: 25px;">

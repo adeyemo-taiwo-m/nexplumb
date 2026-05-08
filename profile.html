@@ -13,10 +13,10 @@
 <body style="background: var(--light-gray);">
 
     <!-- Header -->
-    <header style="background: white; border-bottom: 1px solid var(--border); padding: 15px 40px; position: sticky; top: 0; z-index: 100;">
+    <header style="background: white; border-bottom: 1px solid var(--border); padding: 15px 20px; position: sticky; top: 0; z-index: 100;">
         <div class="web-container" style="display: flex; justify-content: space-between; align-items: center;">
             <a href="search.html" style="text-decoration: none; color: var(--text-secondary); font-weight: 600; display: flex; align-items: center; gap: 10px;">
-                <i class="fas fa-arrow-left"></i> Back to search
+                <i class="fas fa-arrow-left"></i> <span class="hide-on-mobile">Back to search</span>
             </a>
             <div style="font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--navy);">
                 NEX<span style="color: var(--blue);">PLUMB</span>
@@ -28,15 +28,15 @@
         </div>
     </header>
 
-    <main class="web-container" style="padding: 40px 0; display: grid; grid-template-columns: 1fr 400px; gap: 40px;">
+    <main class="web-container" style="padding: 20px 0; display: grid; grid-template-columns: 1fr 400px; gap: 40px;">
         
         <!-- Profile Content -->
         <div class="animate-up">
             <div class="card" style="margin-bottom: 30px;">
-                <div style="display: flex; gap: 30px; align-items: center; margin-bottom: 30px;">
+                <div class="stack-on-mobile" style="display: flex; gap: 30px; align-items: center; margin-bottom: 30px;">
                     <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop" 
                          alt="Adekunle" 
-                         style="width: 150px; height: 150px; border-radius: 30px; object-fit: cover;">
+                         style="width: 120px; height: 120px; border-radius: 30px; object-fit: cover;">
                     <div>
                         <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 10px;">
                             <h1 style="font-size: 2rem;">Adekunle Johnson</h1>
@@ -64,7 +64,7 @@
                 </p>
 
                 <h4 style="margin-bottom: 1.5rem;">Service Portfolio</h4>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                <div class="stack-on-mobile" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
                     <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=2070&auto=format&fit=crop" style="width: 100%; border-radius: 12px; height: 150px; object-fit: cover;">
                     <img src="https://images.unsplash.com/photo-1504148455328-c376907d081c?q=80&w=2078&auto=format&fit=crop" style="width: 100%; border-radius: 12px; height: 150px; object-fit: cover;">
                     <img src="https://images.unsplash.com/photo-1595113316349-9fa4eb24f884?q=80&w=2072&auto=format&fit=crop" style="width: 100%; border-radius: 12px; height: 150px; object-fit: cover;">
@@ -93,7 +93,7 @@
         </div>
 
         <!-- Booking Widget -->
-        <aside style="position: sticky; top: 100px; height: fit-content;" class="animate-up">
+        <aside style="position: relative; height: fit-content;" class="animate-up">
             <div class="card" style="border: 2px solid var(--blue); box-shadow: 0 20px 40px rgba(46, 134, 171, 0.15);">
                 <div style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: baseline;">
                     <span style="font-size: 0.9rem; font-weight: 700; color: var(--text-secondary);">ESTIMATED PAY</span>
