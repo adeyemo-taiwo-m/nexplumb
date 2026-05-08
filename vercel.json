@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/nexplumb_userflow.html",
+      "permanent": true
+    }
+  ]
+}
