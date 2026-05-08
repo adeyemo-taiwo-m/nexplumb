@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexplumb | Web Application Flow Map</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --flow-bg: #050b14;
+            --node-bg: #0f172a;
+            --node-border: #1e293b;
+            --line-color: #334155;
+            --customer-accent: #e76f51;
+            --artisan-accent: #2e86ab;
+            --admin-accent: #2a9d8f;
+        }
+
+        body {
+            background: var(--flow-bg);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden; /* Canvas style */
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .flow-canvas {
+            width: 3000px;
+            height: 2000px;
+            position: relative;
+            padding: 100px;
+            background-image: 
+                radial-gradient(var(--node-border) 1px, transparent 1px);
+            background-size: 40px 40px;
+            transform-origin: 0 0;
+            transition: transform 0.1s ease-out;
+            cursor: grab;
+        }
+
+        .flow-canvas:active { cursor: grabbing; }
+
+        /* UI Controls */
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            padding: 15px 25px;
+            border-radius: 99px;
+            border: 1px solid var(--node-border);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+
+        .control-btn:hover { opacity: 1; color: var(--blue); }
+
+        /* Nodes */
+        .node {
+            position: absolute;
+            width: 260px;
+            background: var(--node-bg);
+            border: 2px solid var(--node-border);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            z-index: 10;
+        }
+
+        .node:hover {
+            border-color: var(--blue);
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(46, 134, 171, 0.2);
+        }
+
+        .node-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .node-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        .node-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #f1f5f9;
+        }
+
+        .node-desc {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        .node-tag {
+            display: inline-block;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        /* Group Labels */
+        .group-label {
+            position: absolute;
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            opacity: 0.5;
+            letter-spacing: 2px;
+        }
+
+        /* Connections (Simplified as SVG) */
+        .connection-layer {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Colors */
+        .customer .node-icon { background: rgba(231, 111, 81, 0.1); color: var(--customer-accent); }
+        .customer .node-tag { background: rgba(231, 111, 81, 0.1); color: var(--customer-accent); }
+        
+        .artisan .node-icon { background: rgba(46, 134, 171, 0.1); color: var(--artisan-accent); }
+        .artisan .node-tag { background: rgba(46, 134, 171, 0.1); color: var(--artisan-accent); }
+
+        .admin .node-icon { background: rgba(42, 157, 143, 0.1); color: var(--admin-accent); }
+        .admin .node-tag { background: rgba(42, 157, 143, 0.1); color: var(--admin-accent); }
+
+        /* Layout Positions */
+        #node-cw1 { left: 100px; top: 300px; }
+        #node-cw2 { left: 450px; top: 300px; }
+        #node-cw3 { left: 800px; top: 300px; }
+        #node-cw4 { left: 1150px; top: 300px; }
+        #node-cw5 { left: 1500px; top: 300px; }
+        #node-cw6 { left: 1850px; top: 300px; }
+
+        #node-aw1 { left: 100px; top: 600px; }
+        #node-ad3 { left: 450px; top: 600px; }
+        #node-aw2 { left: 800px; top: 600px; }
+
+        #node-ad1 { left: 450px; top: 850px; }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header UI -->
+    <div style="position: fixed; top: 0; left: 0; right: 0; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, rgba(5,11,20,0.9), transparent);">
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <a href="nexplumb_userflow.html" style="color: white; text-decoration: none; font-size: 1.5rem;"><i class="fas fa-arrow-left"></i></a>
+            <h1 style="font-family: 'Syne', sans-serif; font-size: 1.2rem; margin: 0;">Interactive Flow Route Map</h1>
+        </div>
+        <div style="display: flex; gap: 15px;">
+            <a href="team_roadmap.html" style="text-decoration: none;"><div class="stat-chip" style="background: rgba(155, 89, 182, 0.1); border: 1px solid rgba(155, 89, 182, 0.2); color: var(--accent-5); font-size: 0.7rem; padding: 5px 12px; border-radius: 20px;">PROJECT ROADMAP →</div></a>
+            <div class="stat-chip" style="background: rgba(231,111,81,0.1); border: 1px solid rgba(231,111,81,0.2); color: var(--customer-accent); font-size: 0.7rem; padding: 5px 12px; border-radius: 20px;">CUSTOMER JOURNEY</div>
+            <div class="stat-chip" style="background: rgba(46,134,171,0.1); border: 1px solid rgba(46,134,171,0.2); color: var(--artisan-accent); font-size: 0.7rem; padding: 5px 12px; border-radius: 20px;">ARTISAN JOURNEY</div>
+        </div>
+    </div>
+
+    <!-- The Canvas -->
+    <div id="canvas-container" style="width: 100vw; height: 100vh; overflow: auto;">
+        <div class="flow-canvas" id="canvas">
+            
+            <svg class="connection-layer" id="svg-layer">
+                <!-- Connections will be rendered here by JS -->
+            </svg>
+
+            <div class="group-label" style="left: 100px; top: 250px;">CUSTOMER PORTAL</div>
+            
+            <!-- Customer Nodes -->
+            <div class="node customer" id="node-cw1">
+                <span class="node-tag">S01 Landing</span>
+                <div class="node-header">
+                    <div class="node-icon"><i class="fas fa-home"></i></div>
+                    <div class="node-title">Hero Search</div>
+                </div>
+                <p class="node-desc">User lands from SEO or Ad. Searches for "Plumber in Lekki".</p>
+                <a href="index.html" style="font-size: 0.7rem; color: var(--blue); margin-top: 10px; display: block; text-decoration: none;">View Screen <i class="fas fa-external-link-alt"></i></a>
+            </div>
+
+            <div class="node customer" id="node-cw2">
+                <span class="node-tag">S02 Results</span>
+                <div class="node-header">
+                    <div class="node-icon"><i class="fas fa-search"></i></div>
+                    <div class="node-title">Search Results</div>
+                </div>
+                <p class="node-desc">Filter by rating, verification, and price. View map pins.</p>
+                <a href="search.html" style="font-size: 0.7rem; color: var(--blue); margin-top: 10px; display: block; text-decoration: none;">View Screen <i class="fas fa-external-link-alt"></i></a>
+            </div>
+
+            <div class="node customer" id="node-cw3">
+                <span class="node-tag">S03 Profile</span>
+                <div class="node-header">
+                    <div class="node-icon"><i class="fas fa-user-check"></i></div>
+                    <div class="node-title">Verified Profile</div>
+                </div>
+                <p class="node-desc">Review artisan portfolio, NIN badge, and history.</p>
+                <a href="profile.html" style="font-size: 0.7rem; color: var(--blue); margin-top: 10px; display: block; text-decoration: none;">View Screen <i class="fas fa-external-link-alt"></i></a>
+            </div>
+
+            <div class="node customer" id="node-cw4">
+                <span class="node-tag">S04 Escrow</span>
+                <div class="node-header">
+                    <div class="node-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="node-title">Escrow Booking</div>
+                </div>
+                <p class="node-desc">Job capture + Escrow payment initiation via Paystack.</p>
+                <a href="booking.html" style="font-size: 0.7rem; color: var(--blue); margin-top: 10px; display: block; text-decoration: none;">View Screen <i class="fas fa-external-link-alt"></i></a>
+            </div>
+
+            <div class="node customer" id="node-cw5">
+                <span class="node-tag">S05 Tracking</span>
+                <div class="node-header">
+                    <div class="node-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="node-title">Live Tracking</div>
+                </div>
+                <p class="node-desc">Monitor artisan ETA and real-time GPS coordinates.</p>
+                <a href="tracking.html" style="font-size: 0.7rem; color: var(--blue); margin-top: 10px; display: block; text-decoration: none;">View Screen <i class="fas fa-external-link-alt"></i></a>
+            </div>
+
+            <div class="node customer" id="node-cw6">
+                <span class="node-tag">S06 Dashboard</span>
+                <div class="node-header">
+                    <div class="node-icon"><i class="fas fa-th"></i></div>
+                    <div class="node-title">Job History</div>
+                </div>
+                <p class="node-desc">Manage past bookings, receipts, and re-hire artisans.</p>
+                <a href="dashboard.html" style="font-size: 0.7rem; color: var(--blue); margin-top: 10px; display: block; text-decoration: none;">View Screen <i class="fas fa-external-link-alt"></i></a>
+            </div>
+
+            <div class="group-label" style="left: 100px; top: 550px;">ARTISAN PORTAL</div>
+
+            <!-- Artisan Nodes -->
+            <div class="node artisan" id="node-aw1">
+                <span class="node-tag">Join</span>
+                <div class="node-header">
+                    <div class="node-icon"><i class="fas fa-user-plus"></i></div>
+                    <div class="node-title">Registration</div>
+                </div>
+                <p class="node-desc">Submit NIN, Profile Photo, and Trade Certifications.</p>
+                <a href="artisan_registration.html" style="font-size: 0.7rem; color: var(--blue); margin-top: 10px; display: block; text-decoration: none;">View Screen <i class="fas fa-external-link-alt"></i></a>
+            </div>
+
+            <div class="node admin" id="node-ad3">
+                <span class="node-tag">Admin</span>
+                <div class="node-header">
+                    <div class="node-icon"><i class="fas fa-id-card"></i></div>
+                    <div class="node-title">Verification Queue</div>
+                </div>
+                <p class="node-desc">Manual/Auto review of NIN and bank details for approval.</p>
+            </div>
+
+            <div class="node artisan" id="node-aw2">
+                <span class="node-tag">Dash</span>
+                <div class="node-header">
+                    <div class="node-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="node-title">Artisan Dashboard</div>
+                </div>
+                <p class="node-desc">Accept jobs, track earnings, and manage availability.</p>
+                <a href="artisan_dashboard.html" style="font-size: 0.7rem; color: var(--blue); margin-top: 10px; display: block; text-decoration: none;">View Screen <i class="fas fa-external-link-alt"></i></a>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- UI Controls -->
+    <div class="controls">
+        <button class="control-btn" onclick="zoom(0.1)"><i class="fas fa-search-plus"></i></button>
+        <button class="control-btn" onclick="zoom(-0.1)"><i class="fas fa-search-minus"></i></button>
+        <button class="control-btn" onclick="resetZoom()"><i class="fas fa-sync"></i></button>
+        <div style="width: 1px; background: var(--node-border); margin: 0 10px;"></div>
+        <button class="control-btn" onclick="togglePaths()"><i class="fas fa-project-diagram"></i> Paths</button>
+    </div>
+
+    <script>
+        let scale = 0.8;
+        const canvas = document.getElementById('canvas');
+        const svgLayer = document.getElementById('svg-layer');
+
+        function zoom(delta) {
+            scale += delta;
+            canvas.style.transform = `scale(${scale})`;
+        }
+
+        function resetZoom() {
+            scale = 0.8;
+            canvas.style.transform = `scale(${scale})`;
+        }
+
+        function drawLine(startElId, endElId, color) {
+            const start = document.getElementById(startElId);
+            const end = document.getElementById(endElId);
+            
+            const x1 = start.offsetLeft + start.offsetWidth;
+            const y1 = start.offsetTop + (start.offsetHeight / 2);
+            
+            const x2 = end.offsetLeft;
+            const y2 = end.offsetTop + (end.offsetHeight / 2);
+
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            const d = `M ${x1} ${y1} C ${x1 + 50} ${y1}, ${x2 - 50} ${y2}, ${x2} ${y2}`;
+            
+            path.setAttribute("d", d);
+            path.setAttribute("stroke", color);
+            path.setAttribute("stroke-width", "2");
+            path.setAttribute("fill", "none");
+            path.setAttribute("marker-end", "url(#arrowhead)");
+            
+            svgLayer.appendChild(path);
+        }
+
+        // Initialize connections
+        window.onload = () => {
+            // Add Arrowhead marker
+            const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+            const marker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
+            marker.setAttribute("id", "arrowhead");
+            marker.setAttribute("markerWidth", "10");
+            marker.setAttribute("markerHeight", "7");
+            marker.setAttribute("refX", "9");
+            marker.setAttribute("refY", "3.5");
+            marker.setAttribute("orient", "auto");
+            const polygon = document.createElementNS("http://www.w3.org/2000/svg", "polygon");
+            polygon.setAttribute("points", "0 0, 10 3.5, 0 7");
+            polygon.setAttribute("fill", "#334155");
+            marker.appendChild(polygon);
+            defs.appendChild(marker);
+            svgLayer.appendChild(defs);
+
+            // Draw Paths
+            drawLine('node-cw1', 'node-cw2', 'rgba(231,111,81,0.3)');
+            drawLine('node-cw2', 'node-cw3', 'rgba(231,111,81,0.3)');
+            drawLine('node-cw3', 'node-cw4', 'rgba(231,111,81,0.3)');
+            drawLine('node-cw4', 'node-cw5', 'rgba(231,111,81,0.3)');
+            drawLine('node-cw5', 'node-cw6', 'rgba(231,111,81,0.3)');
+
+            drawLine('node-aw1', 'node-ad3', 'rgba(46,134,171,0.3)');
+            drawLine('node-ad3', 'node-aw2', 'rgba(46,134,171,0.3)');
+        };
+
+        // Pan capability
+        let isPanning = false;
+        let startX, startY, scrollLeft, scrollTop;
+        const container = document.getElementById('canvas-container');
+
+        container.addEventListener('mousedown', (e) => {
+            isPanning = true;
+            startX = e.pageX - container.offsetLeft;
+            startY = e.pageY - container.offsetTop;
+            scrollLeft = container.scrollLeft;
+            scrollTop = container.scrollTop;
+        });
+
+        container.addEventListener('mouseleave', () => isPanning = false);
+        container.addEventListener('mouseup', () => isPanning = false);
+
+        container.addEventListener('mousemove', (e) => {
+            if (!isPanning) return;
+            e.preventDefault();
+            const x = e.pageX - container.offsetLeft;
+            const y = e.pageY - container.offsetTop;
+            const walkX = (x - startX) * 2;
+            const walkY = (y - startY) * 2;
+            container.scrollLeft = scrollLeft - walkX;
+            container.scrollTop = scrollTop - walkY;
+        });
+    </script>
+</body>
+</html>

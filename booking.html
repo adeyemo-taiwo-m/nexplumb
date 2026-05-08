@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Artisan | Nexplumb</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body style="background: var(--light-gray);">
+
+    <header style="padding: 20px 40px; background: white; border-bottom: 1px solid var(--border);">
+        <div class="web-container" style="display: flex; align-items: center; justify-content: space-between;">
+            <a href="profile.html" style="text-decoration: none; color: var(--text-secondary); font-weight: 700;"><i class="fas fa-arrow-left"></i> Back to Profile</a>
+            <div style="font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; color: var(--navy);">
+                NEX<span style="color: var(--blue);">PLUMB</span>
+            </div>
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);">Step 1 of 3</div>
+        </div>
+    </header>
+
+    <main class="web-container" style="padding: 60px 0; max-width: 800px;">
+        <div class="card animate-up">
+            <h2 style="margin-bottom: 2rem;">Tell us about the job</h2>
+            
+            <form>
+                <div style="margin-bottom: 2rem;">
+                    <label style="display: block; font-weight: 700; margin-bottom: 10px;">What do you need help with?</label>
+                    <select class="btn btn-outline" style="width: 100%; text-align: left; appearance: auto;">
+                        <option>Kitchen Pipe Leakage</option>
+                        <option>Bathroom Installation</option>
+                        <option>Septic Tank Issue</option>
+                        <option>General Maintenance</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <label style="display: block; font-weight: 700; margin-bottom: 10px;">Describe the issue (Optional)</label>
+                    <textarea style="width: 100%; height: 150px; border-radius: 12px; border: 1px solid var(--border); padding: 15px; outline: none; font-family: inherit;" placeholder="Please provide as much detail as possible..."></textarea>
+                </div>
+
+                <div style="margin-bottom: 2.5rem;">
+                    <label style="display: block; font-weight: 700; margin-bottom: 15px;">Add Photos (Recommended)</label>
+                    <div style="border: 2px dashed var(--border); border-radius: 15px; padding: 40px; text-align: center; color: var(--text-secondary);">
+                        <i class="fas fa-cloud-upload-alt" style="font-size: 2.5rem; color: var(--blue); margin-bottom: 10px;"></i>
+                        <p style="font-weight: 600;">Drag and drop photos here, or <span style="color: var(--blue); cursor: pointer;">browse</span></p>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 20px;">
+                    <button type="button" class="btn btn-primary" style="flex: 1; justify-content: center; padding: 18px;" onclick="window.location.href='#'">Continue to Schedule</button>
+                </div>
+            </form>
+        </div>
+        
+        <div style="margin-top: 30px; display: flex; align-items: center; justify-content: center; gap: 30px; opacity: 0.6;">
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700;"><i class="fas fa-lock"></i> SECURE PAYMENT</div>
+            <div style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; font-weight: 700;"><i class="fas fa-shield-alt"></i> ESCROW PROTECTED</div>
+        </div>
+    </main>
+
+</body>
+</html>

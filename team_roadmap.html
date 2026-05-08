@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexplumb | 5-Team Sprint Roadmap</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0A1929;
+            --card-bg: #0F2036;
+            --accent-1: #E76F51; /* Orange */
+            --accent-2: #2E86AB; /* Blue */
+            --accent-3: #2A9D8F; /* Teal */
+            --accent-4: #E9C46A; /* Amber */
+            --accent-5: #9B59B6; /* Purple */
+        }
+
+        body {
+            background: var(--bg);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            padding-bottom: 100px;
+        }
+
+        .roadmap-header {
+            padding: 80px 40px;
+            background: linear-gradient(to bottom, rgba(46, 134, 171, 0.1), transparent);
+            text-align: center;
+        }
+
+        .header-label {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: var(--accent-1);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .roadmap-header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 24px;
+            margin-top: -50px;
+        }
+
+        .team-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255,255,255,0.15);
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 6px; height: 100%;
+        }
+
+        .t1::before { background: var(--accent-1); }
+        .t2::before { background: var(--accent-2); }
+        .t3::before { background: var(--accent-3); }
+        .t4::before { background: var(--accent-4); }
+        .t5::before { background: var(--accent-5); }
+
+        .team-num {
+            font-family: 'Syne', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 800;
+            opacity: 0.5;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .team-name {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .focus-box {
+            background: rgba(255,255,255,0.03);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 1.5rem;
+        }
+
+        .focus-label {
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .focus-text {
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .screen-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .screen-tag {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: monospace;
+        }
+
+        /* Timeline Table */
+        .milestone-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+
+        .milestone-table th {
+            text-align: left;
+            color: rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+        }
+
+        .milestone-table td {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .day-label {
+            font-weight: 800;
+            width: 80px;
+        }
+
+        /* Global Footer */
+        .sprint-summary {
+            background: rgba(42, 157, 143, 0.05);
+            border: 1px dashed var(--accent-3);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .team-grid { grid-template-columns: 1fr; }
+            .container { padding: 0 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="roadmap-header">
+        <div class="container">
+            <span class="header-label">1-Week Rapid Sprint</span>
+            <h1>Phase 1: Task Distribution</h1>
+            <p style="color: rgba(255,255,255,0.5); max-width: 600px; margin: 0 auto; font-size: 1.1rem;">
+                5 Teams of 3 Designers. 21 Screens. 7 Days to Prototype.
+            </p>
+            <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 15px;">
+                <a href="flow.html" class="btn btn-outline" style="border-radius: 99px; padding: 10px 24px; color: white;">View User Flow Map</a>
+                <a href="screen_specs.html" class="btn btn-primary" style="border-radius: 99px; padding: 10px 24px;">View Screen Specs →</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="team-grid">
+            
+            <!-- Team 1 -->
+            <div class="team-card t1">
+                <span class="team-num">TEAM 01</span>
+                <h2 class="team-name">Web Brand & Discovery</h2>
+                <div class="focus-box">
+                    <span class="focus-label">WEB CORE FOCUS</span>
+                    <p class="focus-text">Desktop-first responsive landing pages, SEO-optimized metadata, and hover-state interactions.</p>
+                </div>
+                <div class="screen-list">
+                    <span class="screen-tag">CW-1 Landing</span>
+                    <span class="screen-tag">CW-2 Search</span>
+                    <span class="screen-tag">DS-Tokens</span>
+                </div>
+                <table class="milestone-table">
+                    <tr><td class="day-label">MON</td><td>Design System Finalization (H1-H6, Grid)</td></tr>
+                    <tr><td class="day-label">WED</td><td>Hero Search & Live Map View (CW-2)</td></tr>
+                    <tr><td class="day-label">FRI</td><td>SEO Structured Data & Final Polish</td></tr>
+                </table>
+            </div>
+
+            <!-- Team 2 -->
+            <div class="team-card t2">
+                <span class="team-num">TEAM 02</span>
+                <h2 class="team-name">Identity Management</h2>
+                <div class="focus-box">
+                    <span class="focus-label">WEB CORE FOCUS</span>
+                    <p class="focus-text">Webcam-native verification, profile URL slugs, and browser-based auth management.</p>
+                </div>
+                <div class="screen-list">
+                    <span class="screen-tag">CW-3 Profile</span>
+                    <span class="screen-tag">AW-1 Registration</span>
+                </div>
+                <table class="milestone-table">
+                    <tr><td class="day-label">MON</td><td>Identity Verification UI (NIMC Integration)</td></tr>
+                    <tr><td class="day-label">WED</td><td>Public Profile Trust Signals (CW-3)</td></tr>
+                    <tr><td class="day-label">FRI</td><td>Artisan Portfolio Upload & Photo Wizard</td></tr>
+                </table>
+            </div>
+
+            <!-- Team 3 -->
+            <div class="team-card t3">
+                <span class="team-num">TEAM 03</span>
+                <h2 class="team-name">Transaction Engine</h2>
+                <div class="focus-box">
+                    <span class="focus-label">CORE FOCUS</span>
+                    <p class="focus-text">The checkout loop: Job capture, scheduling, and escrow payment integration.</p>
+                </div>
+                <div class="screen-list">
+                    <span class="screen-tag">CW-4A Details</span>
+                    <span class="screen-tag">CW-4B Sched</span>
+                    <span class="screen-tag">CW-4C Pay</span>
+                </div>
+                <table class="milestone-table">
+                    <tr><td class="day-label">MON</td><td>Job Requirement Form (Dynamic inputs)</td></tr>
+                    <tr><td class="day-label">WED</td><td>Date/Time Selection Grid (Slot logic)</td></tr>
+                    <tr><td class="day-label">FRI</td><td>Payment State Machine (Paystack/Escrow)</td></tr>
+                </table>
+            </div>
+
+            <!-- Team 4 -->
+            <div class="team-card t4">
+                <span class="team-num">TEAM 04</span>
+                <h2 class="team-name">Real-time Ops</h2>
+                <div class="focus-box">
+                    <span class="focus-label">CORE FOCUS</span>
+                    <p class="focus-text">Live status tracking, WebSocket communication UI, and Artisan tools.</p>
+                </div>
+                <div class="screen-list">
+                    <span class="screen-tag">CW-5 Tracking</span>
+                    <span class="screen-tag">AW-2 Artisan Dash</span>
+                </div>
+                <table class="milestone-table">
+                    <tr><td class="day-label">MON</td><td>GPS Tracking Map (Polyline animations)</td></tr>
+                    <tr><td class="day-label">WED</td><td>Artisan Job Alert & Response Flow</td></tr>
+                    <tr><td class="day-label">FRI</td><td>Live Status Timeline (Confirm to Done)</td></tr>
+                </table>
+            </div>
+
+            <!-- Team 5 -->
+            <div class="team-card t5">
+                <span class="team-num">TEAM 05</span>
+                <h2 class="team-name">Admin Web Portal</h2>
+                <div class="focus-box">
+                    <span class="focus-label">WEB CORE FOCUS</span>
+                    <p class="focus-text">Advanced data tables, CSV/PDF exporting, and large-screen monitoring dashboards.</p>
+                </div>
+                <div class="screen-list">
+                    <span class="screen-tag">CW-6 Dashboard</span>
+                    <span class="screen-tag">AD-1 Overview</span>
+                    <span class="screen-tag">AD-2 Dispute</span>
+                </div>
+                <table class="milestone-table">
+                    <tr><td class="day-label">MON</td><td>Admin Metrics Strip & Data Visuals</td></tr>
+                    <tr><td class="day-label">WED</td><td>Dispute Resolution UI (Evidence view)</td></tr>
+                    <tr><td class="day-label">FRI</td><td>Customer History & Receipt Management</td></tr>
+                </table>
+            </div>
+
+        </div>
+
+        <section class="sprint-summary">
+            <h3 style="font-family: 'Syne', sans-serif; margin-bottom: 1rem;">Daily Sprint Sync Schedule</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                <div>
+                    <h4 style="color: var(--accent-3);">09:00 AM</h4>
+                    <p style="font-size: 0.85rem; opacity: 0.7;">Stand-up (Blockers only)</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-2);">01:00 PM</h4>
+                    <p style="font-size: 0.85rem; opacity: 0.7;">Team Peer Reviews</p>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent-1);">05:00 PM</h4>
+                    <p style="font-size: 0.85rem; opacity: 0.7;">Upload to Figma Main File</p>
+                </div>
+            </div>
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.9rem;">
+                <p><strong>Note for Leads:</strong> Ensure all teams use the tokens defined in <code>styles.css</code>. No ad-hoc colors or font-weights allowed.</p>
+            </div>
+        </section>
+    </main>
+
+</body>
+</html>

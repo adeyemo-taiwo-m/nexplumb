@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexplumb | Professional Artisans at Your Doorstep</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header / Nav -->
+    <nav class="web-container" style="display: flex; justify-content: space-between; align-items: center; padding: 25px 40px;">
+        <div style="font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--navy);">
+            NEX<span style="color: var(--blue);">PLUMB</span>
+        </div>
+        <div style="display: flex; gap: 30px; align-items: center;">
+            <a href="#" style="text-decoration: none; color: var(--text-primary); font-weight: 600;">Find Artisans</a>
+            <a href="#" style="text-decoration: none; color: var(--text-primary); font-weight: 600;">How it Works</a>
+            <a href="artisan_registration.html" style="text-decoration: none; color: var(--blue); font-weight: 700;">Join as Artisan</a>
+            <a href="#" class="btn btn-outline">Login</a>
+            <a href="#" class="btn btn-primary">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section style="padding: 100px 0; background: radial-gradient(circle at top right, rgba(46, 134, 171, 0.05), transparent);">
+        <div class="web-container">
+            <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center;">
+                <div class="animate-up">
+                    <span class="badge badge-verified" style="margin-bottom: 1.5rem; display: inline-block;">Trust-Driven Marketplace</span>
+                    <h1 style="font-size: 4.5rem; line-height: 1.1; margin-bottom: 2rem; color: var(--navy);">
+                        Verified Artisans for Your <span style="color: var(--blue);">Modern Home.</span>
+                    </h1>
+                    <p style="font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 3rem; max-width: 540px;">
+                        The web operating system for finding, hiring, and paying professional artisans in Nigeria. Secure escrow, NIN-verified profiles.
+                    </p>
+                    
+                    <!-- Search Bar Web -->
+                    <div class="card" style="padding: 10px; border-radius: 20px; display: flex; gap: 10px; max-width: 600px; box-shadow: 0 20px 50px rgba(0,0,0,0.1);">
+                        <div style="flex: 1; display: flex; align-items: center; gap: 15px; padding: 0 20px;">
+                            <i class="fas fa-search" style="color: var(--text-secondary);"></i>
+                            <input type="text" placeholder="What do you need help with?" style="border: none; outline: none; width: 100%; font-size: 1rem; font-weight: 500;">
+                        </div>
+                        <div style="width: 1px; background: var(--border);"></div>
+                        <div style="flex: 0.6; display: flex; align-items: center; gap: 15px; padding: 0 20px;">
+                            <i class="fas fa-location-dot" style="color: var(--text-secondary);"></i>
+                            <input type="text" placeholder="Lekki, Lagos" style="border: none; outline: none; width: 100%; font-size: 1rem; font-weight: 500;">
+                        </div>
+                        <a href="search.html" class="btn btn-primary" style="padding: 15px 30px;">Search</a>
+                    </div>
+                </div>
+
+                <div class="animate-up" style="animation-delay: 0.2s; position: relative;">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop" 
+                         alt="Professional Artisan" 
+                         style="width: 100%; border-radius: 40px; box-shadow: 0 30px 60px rgba(13, 33, 55, 0.2);">
+                    
+                    <!-- Floating Trust Badge -->
+                    <div class="card" style="position: absolute; bottom: -30px; left: -30px; padding: 20px; border-radius: 20px; display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 50px; height: 50px; background: var(--teal); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-shield-check"></i>
+                        </div>
+                        <div>
+                            <div style="font-weight: 800; color: var(--navy);">NIN Verified</div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary);">100% Secure Profiles</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section class="web-container" style="padding: 80px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem;">
+            <div>
+                <h2 style="font-size: 2.5rem; color: var(--navy);">Browse Services</h2>
+                <p style="color: var(--text-secondary);">Find the right expert for your specific needs.</p>
+            </div>
+            <a href="#" style="color: var(--blue); font-weight: 700; text-decoration: none;">View All <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
+            <!-- Service Card -->
+            <div class="card animate-up" style="cursor: pointer; text-align: center; padding: 40px 20px;">
+                <div style="font-size: 3rem; color: var(--blue); margin-bottom: 1.5rem;">
+                    <i class="fas fa-faucet"></i>
+                </div>
+                <h3>Plumbing</h3>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">Leakages, installations, & repairs.</p>
+            </div>
+            <div class="card animate-up" style="cursor: pointer; text-align: center; padding: 40px 20px; animation-delay: 0.1s;">
+                <div style="font-size: 3rem; color: var(--orange); margin-bottom: 1.5rem;">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Electrical</h3>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">Wiring, lighting, & power issues.</p>
+            </div>
+            <div class="card animate-up" style="cursor: pointer; text-align: center; padding: 40px 20px; animation-delay: 0.2s;">
+                <div style="font-size: 3rem; color: var(--teal); margin-bottom: 1.5rem;">
+                    <i class="fas fa-snowflake"></i>
+                </div>
+                <h3>HVAC / AC</h3>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">Cooling systems & ventilation.</p>
+            </div>
+            <div class="card animate-up" style="cursor: pointer; text-align: center; padding: 40px 20px; animation-delay: 0.3s;">
+                <div style="font-size: 3rem; color: var(--amber); margin-bottom: 1.5rem;">
+                    <i class="fas fa-hammer"></i>
+                </div>
+                <h3>Carpentry</h3>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 0.5rem;">Furniture, doors, & woodwork.</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

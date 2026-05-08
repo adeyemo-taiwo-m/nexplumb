@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Artisans | Nexplumb</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body style="background: var(--white);">
+
+    <!-- Header -->
+    <header style="border-bottom: 1px solid var(--border); padding: 20px 40px; display: flex; align-items: center; gap: 40px; position: sticky; top: 0; background: white; z-index: 100;">
+        <a href="index.html" style="font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.25rem; color: var(--navy); text-decoration: none;">
+            NEX<span style="color: var(--blue);">PLUMB</span>
+        </a>
+        
+        <div style="flex: 1; max-width: 600px; position: relative;">
+            <i class="fas fa-search" style="position: absolute; left: 15px; top: 12px; color: var(--text-secondary);"></i>
+            <input type="text" value="Plumbers in Lekki, Lagos" style="width: 100%; padding: 10px 10px 10px 45px; border-radius: 10px; border: 1px solid var(--border); outline: none; font-size: 0.95rem; font-weight: 500;">
+        </div>
+
+        <div style="margin-left: auto; display: flex; gap: 20px; align-items: center;">
+            <a href="#" style="color: var(--text-primary); text-decoration: none; font-weight: 600;">My Jobs</a>
+            <div style="width: 40px; height: 40px; background: var(--light-gray); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800;">JB</div>
+        </div>
+    </header>
+
+    <div style="display: grid; grid-template-columns: 320px 1fr; min-height: calc(100vh - 81px);">
+        <!-- Filters Sidebar -->
+        <aside style="padding: 40px; border-right: 1px solid var(--border); position: sticky; top: 81px; height: calc(100vh - 81px); overflow-y: auto;">
+            <h4 style="margin-bottom: 1.5rem;">Filters</h4>
+            
+            <div style="margin-bottom: 2.5rem;">
+                <span class="focus-label" style="display: block; margin-bottom: 1rem; font-size: 0.75rem; color: var(--text-secondary); letter-spacing: 1px;">VERIFICATION</span>
+                <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; cursor: pointer;">
+                    <input type="checkbox" checked>
+                    <span style="font-size: 0.9rem; font-weight: 600;">NIN Verified Only</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                    <input type="checkbox">
+                    <span style="font-size: 0.9rem; font-weight: 600;">Nexplumb Certified</span>
+                </label>
+            </div>
+
+            <div style="margin-bottom: 2.5rem;">
+                <span class="focus-label" style="display: block; margin-bottom: 1rem; font-size: 0.75rem; color: var(--text-secondary); letter-spacing: 1px;">TRADE CATEGORY</span>
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <a href="#" style="text-decoration: none; color: var(--blue); font-weight: 700; font-size: 0.9rem;">Plumbing (24)</a>
+                    <a href="#" style="text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.9rem;">Electrical (18)</a>
+                    <a href="#" style="text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.9rem;">HVAC (9)</a>
+                    <a href="#" style="text-decoration: none; color: var(--text-secondary); font-weight: 500; font-size: 0.9rem;">Carpentry (12)</a>
+                </div>
+            </div>
+
+            <div style="margin-bottom: 2.5rem;">
+                <span class="focus-label" style="display: block; margin-bottom: 1rem; font-size: 0.75rem; color: var(--text-secondary); letter-spacing: 1px;">MINIMUM RATING</span>
+                <div style="display: flex; gap: 5px; font-size: 1.1rem; color: var(--amber);">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                    <span style="color: var(--text-secondary); font-size: 0.8rem; margin-left: 5px; font-weight: 600;">4.0 & Up</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Search Results Area -->
+        <main style="padding: 40px; background: var(--light-gray);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                <h2 style="font-size: 1.5rem;">24 Plumbers in Lekki</h2>
+                <div style="display: flex; gap: 10px; background: white; padding: 5px; border-radius: 10px; border: 1px solid var(--border);">
+                    <button class="btn" style="padding: 8px 16px; background: var(--navy); color: white; font-size: 0.8rem;"><i class="fas fa-th-large"></i> Grid</button>
+                    <button class="btn" style="padding: 8px 16px; background: transparent; color: var(--text-secondary); font-size: 0.8rem;"><i class="fas fa-map"></i> Map</button>
+                </div>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 24px;">
+                <!-- Artisan Card -->
+                <div class="card animate-up" style="padding: 0; overflow: hidden;">
+                    <div style="display: flex; gap: 20px; padding: 25px;">
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069&auto=format&fit=crop" 
+                             alt="Artisan" 
+                             style="width: 100px; height: 100px; border-radius: 15px; object-fit: crop;">
+                        <div style="flex: 1;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                <div>
+                                    <h3 style="font-size: 1.1rem; margin-bottom: 4px;">Adekunle Johnson</h3>
+                                    <span class="badge badge-verified" style="font-size: 0.65rem;"><i class="fas fa-shield-check"></i> NIN Verified</span>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="font-weight: 800; color: var(--navy);">₦5,000</div>
+                                    <div style="font-size: 0.7rem; color: var(--text-secondary);">Avg. Task</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px; margin-top: 15px; font-size: 0.85rem; font-weight: 600;">
+                                <span style="color: var(--amber);"><i class="fas fa-star"></i> 4.9</span>
+                                <span style="color: var(--text-secondary);">(142 Reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: #F1F5F9; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);"><i class="fas fa-location-dot"></i> 1.2km away · Lekki Phase 1</div>
+                        <a href="profile.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">View Profile</a>
+                    </div>
+                </div>
+
+                <!-- Another Card -->
+                <div class="card animate-up" style="padding: 0; overflow: hidden; animation-delay: 0.1s;">
+                    <div style="display: flex; gap: 20px; padding: 25px;">
+                        <img src="https://images.unsplash.com/photo-1558223108-630d93211d81?q=80&w=2070&auto=format&fit=crop" 
+                             alt="Artisan" 
+                             style="width: 100px; height: 100px; border-radius: 15px; object-fit: crop;">
+                        <div style="flex: 1;">
+                            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                                <div>
+                                    <h3 style="font-size: 1.1rem; margin-bottom: 4px;">Samuel Okon</h3>
+                                    <span class="badge badge-verified" style="font-size: 0.65rem;"><i class="fas fa-shield-check"></i> NIN Verified</span>
+                                </div>
+                                <div style="text-align: right;">
+                                    <div style="font-weight: 800; color: var(--navy);">₦4,500</div>
+                                    <div style="font-size: 0.7rem; color: var(--text-secondary);">Avg. Task</div>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 10px; margin-top: 15px; font-size: 0.85rem; font-weight: 600;">
+                                <span style="color: var(--amber);"><i class="fas fa-star"></i> 4.7</span>
+                                <span style="color: var(--text-secondary);">(89 Reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: #F1F5F9; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center;">
+                        <div style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);"><i class="fas fa-location-dot"></i> 3.5km away · Jakande</div>
+                        <a href="profile.html" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
