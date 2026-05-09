@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nexplumb — Complete Screen Instruction Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=IBM+Plex+Mono:wght@400;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy:    #0D2137;
+    --blue:    #2E86AB;
+    --teal:    #2A9D8F;
+    --orange:  #E76F51;
+    --amber:   #E9C46A;
+    --white:   #FFFFFF;
+    --lightgray: #F2F4F6;
+    --midgray: #D5D8DC;
+    --bodytext: #1C2833;
+    --secondary: #717D7E;
+    --font-head: 'Sora', sans-serif;
+    --font-body: 'Lora', serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--lightgray);
+    color: var(--bodytext);
+    line-height: 1.75;
+    font-size: 15px;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: fixed;
+    top: 0; left: 0;
+    width: 280px;
+    height: 100vh;
+    background: var(--navy);
+    overflow-y: auto;
+    z-index: 100;
+    padding: 0 0 40px;
+    border-right: 2px solid rgba(46,134,171,0.25);
+  }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--blue); border-radius: 4px; }
+
+  .sidebar-brand {
+    padding: 28px 24px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 8px;
+  }
+  .sidebar-brand h1 {
+    font-family: var(--font-head);
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+  .sidebar-brand span {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--teal);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 4px;
+  }
+
+  .nav-group-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.3);
+    padding: 16px 24px 6px;
+  }
+  .sidebar nav a {
+    display: block;
+    padding: 8px 24px;
+    font-family: var(--font-head);
+    font-size: 12.5px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+  }
+  .sidebar nav a:hover {
+    color: var(--white);
+    background: rgba(255,255,255,0.04);
+    border-left-color: var(--teal);
+  }
+  .sidebar nav a.portal-link {
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    font-size: 13px;
+    margin-top: 4px;
+  }
+  .sidebar nav a.sub-link {
+    padding-left: 36px;
+    font-size: 12px;
+  }
+
+  /* ── MAIN CONTENT ── */
+  .main {
+    margin-left: 280px;
+    min-height: 100vh;
+  }
+
+  /* ── HERO HEADER ── */
+  .doc-hero {
+    background: var(--navy);
+    padding: 80px 64px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .doc-hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(42,157,143,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .doc-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 200px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(46,134,171,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .doc-hero-badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--teal);
+    border: 1px solid var(--teal);
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+  }
+  .doc-hero h1 {
+    font-family: var(--font-head);
+    font-size: 44px;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    max-width: 640px;
+    margin-bottom: 16px;
+  }
+  .doc-hero h1 span { color: var(--orange); }
+  .doc-hero p {
+    font-size: 16px;
+    color: rgba(255,255,255,0.6);
+    max-width: 560px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .hero-meta {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .hero-meta-item {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .hero-meta-item strong {
+    display: block;
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  /* ── CONTENT WRAPPER ── */
+  .content-wrap {
+    padding: 56px 64px;
+    max-width: 960px;
+  }
+
+  /* ── PORTAL DIVIDER ── */
+  .portal-divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 64px 0 40px;
+  }
+  .portal-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--midgray);
+  }
+  .portal-divider-badge {
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 6px 16px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+  .badge-customer { background: var(--navy); color: var(--white); }
+  .badge-artisan  { background: var(--teal);  color: var(--white); }
+  .badge-admin    { background: var(--blue);  color: var(--white); }
+  .badge-supplier { background: var(--orange); color: var(--white); }
+  .badge-phase    { background: var(--amber); color: var(--navy); }
+  .badge-b2b      { background: var(--navy); color: var(--amber); border: 1px solid var(--amber); }
+
+  /* ── SCREEN CARD ── */
+  .screen-card {
+    background: var(--white);
+    border-radius: 8px;
+    margin-bottom: 40px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+    border: 1px solid var(--midgray);
+  }
+  .screen-card-header {
+    padding: 28px 36px;
+    border-bottom: 1px solid var(--lightgray);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .screen-id-badge {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+  .id-cw  { background: rgba(13,33,55,0.08);  color: var(--navy); }
+  .id-aw  { background: rgba(42,157,143,0.12); color: #1a7a6e; }
+  .id-ad  { background: rgba(46,134,171,0.12); color: #1e6a8a; }
+  .id-sp  { background: rgba(231,111,81,0.12); color: #c0501e; }
+  .id-ep  { background: rgba(233,196,106,0.15); color: #8a6a00; }
+  .id-fp  { background: rgba(42,157,143,0.12); color: #1a7a6e; }
+
+  .screen-card-header-text h2 {
+    font-family: var(--font-head);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .screen-card-header-text .url-line {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--secondary);
+  }
+  .screen-card-header-text .url-line span {
+    color: var(--blue);
+  }
+
+  .screen-card-body {
+    padding: 28px 36px;
+  }
+
+  /* ── PURPOSE BLOCK ── */
+  .purpose-block {
+    background: var(--lightgray);
+    border-left: 3px solid var(--teal);
+    padding: 14px 20px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 28px;
+    font-size: 14px;
+    color: var(--bodytext);
+    font-style: italic;
+  }
+  .purpose-block strong {
+    display: block;
+    font-family: var(--font-head);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--teal);
+    font-style: normal;
+    margin-bottom: 4px;
+  }
+
+  /* ── SECTION HEADING ── */
+  .section-title {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--navy);
+    margin: 28px 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--midgray);
+  }
+
+  /* ── COMPONENT BLOCK ── */
+  .component-block {
+    border: 1px solid var(--midgray);
+    border-radius: 6px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }
+  .component-block-header {
+    background: var(--lightgray);
+    padding: 10px 16px;
+    font-family: var(--font-head);
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .component-block-header .component-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+  .component-block-body {
+    padding: 14px 16px;
+  }
+  .component-block-body p {
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--bodytext);
+    margin-bottom: 8px;
+  }
+  .component-block-body p:last-child { margin-bottom: 0; }
+
+  /* ── ELEMENT LIST ── */
+  .element-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .element-list li {
+    font-size: 13.5px;
+    color: var(--bodytext);
+    padding: 5px 0 5px 20px;
+    position: relative;
+    border-bottom: 1px solid var(--lightgray);
+    line-height: 1.6;
+  }
+  .element-list li:last-child { border-bottom: none; }
+  .element-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-size: 11px;
+    top: 7px;
+  }
+  .element-list li strong {
+    font-family: var(--font-head);
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  /* ── STEP LIST ── */
+  .step-list {
+    counter-reset: step;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .step-list li {
+    counter-increment: step;
+    padding: 12px 12px 12px 48px;
+    position: relative;
+    border-bottom: 1px solid var(--lightgray);
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+  .step-list li:last-child { border-bottom: none; }
+  .step-list li::before {
+    content: counter(step);
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    width: 24px;
+    height: 24px;
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 50%;
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 24px;
+  }
+  .step-list li strong {
+    font-family: var(--font-head);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 3px;
+    color: var(--navy);
+  }
+
+  /* ── CALLOUT ── */
+  .callout {
+    border-radius: 6px;
+    padding: 14px 18px;
+    margin: 20px 0;
+    font-size: 13.5px;
+    line-height: 1.65;
+    display: flex;
+    gap: 12px;
+  }
+  .callout-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+  .callout-info  { background: rgba(46,134,171,0.08); border: 1px solid rgba(46,134,171,0.2); color: #1e4f6a; }
+  .callout-warn  { background: rgba(233,196,106,0.12); border: 1px solid rgba(233,196,106,0.4); color: #6b5200; }
+  .callout-rule  { background: rgba(231,111,81,0.08); border: 1px solid rgba(231,111,81,0.25); color: #7a3018; }
+  .callout-tip   { background: rgba(42,157,143,0.08); border: 1px solid rgba(42,157,143,0.25); color: #1a5a52; }
+
+  /* ── DATA TABLE ── */
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 12px 0;
+  }
+  .data-table th {
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--font-head);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .data-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--lightgray);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+  .data-table tr:nth-child(even) td { background: rgba(242,244,246,0.6); }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table td strong { font-family: var(--font-head); font-weight: 600; color: var(--navy); }
+
+  /* ── STATUS CHIPS ── */
+  .chip {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 1px;
+  }
+  .chip-p0 { background: rgba(231,111,81,0.15); color: #c0401a; }
+  .chip-p1 { background: rgba(46,134,171,0.15); color: #1e6a8a; }
+  .chip-teal { background: rgba(42,157,143,0.15); color: #1a7a6e; }
+  .chip-amber { background: rgba(233,196,106,0.2); color: #7a5c00; }
+
+  /* ── INTRO / OVERVIEW ── */
+  .intro-section {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 36px;
+    margin-bottom: 40px;
+    border: 1px solid var(--midgray);
+  }
+  .intro-section h2 {
+    font-family: var(--font-head);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .intro-section p {
+    font-size: 14.5px;
+    color: var(--bodytext);
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+  .intro-section p:last-child { margin-bottom: 0; }
+
+  /* ── PORTAL OVERVIEW TABLE ── */
+  .portals-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .portal-card {
+    border-radius: 6px;
+    padding: 18px 20px;
+    border: 1px solid;
+  }
+  .portal-card h3 {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .portal-card p {
+    font-size: 12.5px;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .portal-card .portal-url {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .pc-customer { border-color: rgba(13,33,55,0.2); background: rgba(13,33,55,0.03); }
+  .pc-customer h3 { color: var(--navy); }
+  .pc-customer .portal-url { color: var(--blue); }
+  .pc-artisan { border-color: rgba(42,157,143,0.3); background: rgba(42,157,143,0.04); }
+  .pc-artisan h3 { color: #1a7a6e; }
+  .pc-artisan .portal-url { color: var(--teal); }
+  .pc-admin { border-color: rgba(46,134,171,0.3); background: rgba(46,134,171,0.04); }
+  .pc-admin h3 { color: #1e6a8a; }
+  .pc-admin .portal-url { color: var(--blue); }
+  .pc-supplier { border-color: rgba(231,111,81,0.3); background: rgba(231,111,81,0.04); }
+  .pc-supplier h3 { color: #c0501e; }
+  .pc-supplier .portal-url { color: var(--orange); }
+
+  /* ── SUB-SECTION WITHIN SCREEN ── */
+  .sub-section {
+    margin-top: 8px;
+  }
+  .sub-section + .sub-section {
+    margin-top: 4px;
+  }
+
+  /* ── FOOTER ── */
+  .doc-footer {
+    background: var(--navy);
+    padding: 40px 64px;
+    margin-left: 0;
+  }
+  .doc-footer p {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+  .doc-footer span { color: var(--teal); }
+
+  /* ── SCROLL TO TOP ── */
+  .scroll-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 40px;
+    height: 40px;
+    background: var(--orange);
+    color: var(--white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 0 4px 12px rgba(231,111,81,0.4);
+    text-decoration: none;
+    z-index: 200;
+    transition: transform 0.2s;
+  }
+  .scroll-top:hover { transform: translateY(-2px); }
+
+  /* ── PHASE BANNER ── */
+  .phase-banner {
+    border-radius: 6px;
+    padding: 16px 24px;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .phase-1-banner { background: linear-gradient(135deg, rgba(13,33,55,0.06), rgba(46,134,171,0.08)); border: 1px solid rgba(13,33,55,0.15); }
+  .phase-2-banner { background: linear-gradient(135deg, rgba(42,157,143,0.06), rgba(42,157,143,0.1)); border: 1px solid rgba(42,157,143,0.2); }
+  .phase-3-banner { background: linear-gradient(135deg, rgba(233,196,106,0.08), rgba(231,111,81,0.06)); border: 1px solid rgba(233,196,106,0.3); }
+  .phase-banner-label {
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 4px 12px;
+    border-radius: 3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .phase-1-label { background: var(--navy); color: var(--white); }
+  .phase-2-label { background: var(--teal); color: var(--white); }
+  .phase-3-label { background: var(--amber); color: var(--navy); }
+  .phase-banner-text {
+    font-size: 13.5px;
+    color: var(--bodytext);
+    line-height: 1.5;
+  }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .breadcrumb span { color: var(--teal); }
+
+  @media print {
+    .sidebar { display: none; }
+    .main { margin-left: 0; }
+    .content-wrap { padding: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     SIDEBAR
+═══════════════════════════════════════════ -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <h1>NEXPLUMB</h1>
+    <span>Screen Instruction Guide</span>
+  </div>
+  <nav>
+    <div class="nav-group-label">Introduction</div>
+    <a href="#intro" class="portal-link">Overview & Architecture</a>
+    <a href="#design-system" class="sub-link">Design System</a>
+
+    <div class="nav-group-label">Phase 1 — Customer Portal</div>
+    <a href="#cw1" class="portal-link">CW-1 Public Homepage</a>
+    <a href="#cw2" class="sub-link">CW-2 Search Results</a>
+    <a href="#cw3" class="sub-link">CW-3 Artisan Profile</a>
+    <a href="#cw-signup" class="sub-link">CW-S Customer Sign Up</a>
+    <a href="#cw-login" class="sub-link">CW-L Customer Login</a>
+    <a href="#cw4" class="sub-link">CW-4 Booking Flow</a>
+    <a href="#cw5" class="sub-link">CW-5 Live Job Tracking</a>
+    <a href="#cw6" class="sub-link">CW-6 Customer Dashboard</a>
+
+    <div class="nav-group-label">Phase 1 — Artisan Portal</div>
+    <a href="#aw1" class="portal-link">AW-1 Artisan Registration</a>
+    <a href="#aw2" class="sub-link">AW-2 Artisan Dashboard</a>
+    <a href="#aw-jobs" class="sub-link">AW-3 My Jobs</a>
+    <a href="#aw-earnings" class="sub-link">AW-4 Earnings & Payouts</a>
+    <a href="#aw-profile" class="sub-link">AW-5 Profile Editor</a>
+    <a href="#aw-reviews" class="sub-link">AW-6 Reviews Tab</a>
+
+    <div class="nav-group-label">Phase 1 — Admin Dashboard</div>
+    <a href="#ad1" class="portal-link">AD-1 Admin Overview</a>
+    <a href="#ad2" class="sub-link">AD-2 Jobs Management</a>
+    <a href="#ad3" class="sub-link">AD-3 Dispute Resolution</a>
+    <a href="#ad4" class="sub-link">AD-4 Verification Queue</a>
+    <a href="#ad5" class="sub-link">AD-5 Analytics</a>
+    <a href="#ad6" class="sub-link">AD-6 User Management</a>
+
+    <div class="nav-group-label">Phase 2 — Supplier Portal</div>
+    <a href="#sp1" class="portal-link">SP-1 Supplier Registration</a>
+    <a href="#sp2" class="sub-link">SP-2 Supplier Dashboard</a>
+    <a href="#sp-products" class="sub-link">SP-3 Products Catalogue</a>
+    <a href="#sp-orders" class="sub-link">SP-4 Orders Management</a>
+
+    <div class="nav-group-label">Phase 2 — Enhanced Features</div>
+    <a href="#cw-e1" class="portal-link">CW-E1 Price Estimator</a>
+    <a href="#cw-e2" class="sub-link">CW-E2 Emergency Booking</a>
+    <a href="#whatsapp" class="sub-link">WhatsApp Bot Flow</a>
+
+    <div class="nav-group-label">Phase 3 — Ecosystem</div>
+    <a href="#ep1" class="portal-link">EP-1 Enterprise Portal</a>
+    <a href="#fp1" class="sub-link">FP-1 Artisan Finance Portal</a>
+
+    <div class="nav-group-label">Standards</div>
+    <a href="#screen-states" class="portal-link">Screen States</a>
+    <a href="#accessibility" class="sub-link">Accessibility</a>
+    <a href="#seo" class="sub-link">SEO Standards</a>
+    <a href="#handoff" class="sub-link">Handoff Standards</a>
+  </nav>
+</aside>
+
+<!-- ══════════════════════════════════════════
+     MAIN CONTENT
+═══════════════════════════════════════════ -->
+<div class="main">
+
+  <!-- HERO -->
+  <div class="doc-hero">
+    <div class="doc-hero-badge">UX Screen Instruction Guide · v1.0</div>
+    <h1>Building <span>Nexplumb</span> — Screen by Screen</h1>
+    <p>A complete beginner-friendly guide to every screen, section, and component across all four portals of the Nexplumb web application. From the public homepage to the enterprise dashboard — every detail explained.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>4 Portals</strong>Customer · Artisan · Admin · Supplier</div>
+      <div class="hero-meta-item"><strong>3 Phases</strong>MVP → Enhanced → Ecosystem</div>
+      <div class="hero-meta-item"><strong>30+ Screens</strong>Fully detailed</div>
+      <div class="hero-meta-item"><strong>Breakpoints</strong>Desktop · Tablet · Mobile Web</div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="content-wrap">
+
+    <!-- ════════════════════════════════════════
+         INTRODUCTION
+    ═════════════════════════════════════════ -->
+    <div id="intro" class="intro-section">
+      <h2>What Is Nexplumb?</h2>
+      <p>Nexplumb is a two-sided online marketplace that connects customers in Nigeria (starting in Lagos) with verified, trusted artisans — plumbers, electricians, carpenters, painters, and other tradespeople. Think of it like a Nigerian version of Uber, but for skilled home services. A customer opens the app, finds a plumber, pays safely, watches them arrive on a live map, and reviews the job afterwards.</p>
+      <p>The entire web application is made up of <strong>four separate portals</strong> — each designed for a different type of user — all sharing the same brand, design system, and backend. This document walks you through every screen in all four portals, telling you exactly what belongs on each page, why it is there, and how it should work.</p>
+      <p><strong>How to use this guide:</strong> Use the left sidebar to jump to any screen. Each screen card tells you its purpose, lists every section that must appear on that page, and explains what each element does in plain language. Designers should read this before opening Figma. Developers should reference it alongside the UX document.</p>
+    </div>
+
+    <!-- PORTALS GRID -->
+    <div class="portals-grid">
+      <div class="portal-card pc-customer">
+        <h3>🏠 Customer Web Portal</h3>
+        <span class="portal-url">nexplumb.com</span>
+        <p>For homeowners, tenants, and property managers. They search for artisans, book jobs, pay safely, and track arrivals in real time.</p>
+      </div>
+      <div class="portal-card pc-artisan">
+        <h3>🔧 Artisan Web Portal</h3>
+        <span class="portal-url">app.nexplumb.com/artisan</span>
+        <p>For plumbers, electricians, and other tradespeople. They manage their profile, view their earnings, and track their business growth.</p>
+      </div>
+      <div class="portal-card pc-admin">
+        <h3>⚙️ Admin Dashboard</h3>
+        <span class="portal-url">admin.nexplumb.com</span>
+        <p>For Nexplumb's internal operations team. They oversee all platform activity, verify artisans, resolve disputes, and monitor revenue.</p>
+      </div>
+      <div class="portal-card pc-supplier">
+        <h3>📦 Supplier Portal</h3>
+        <span class="portal-url">supplier.nexplumb.com</span>
+        <p>For material suppliers and importers. They list products, manage stock, and receive orders from artisans through the platform.</p>
+      </div>
+    </div>
+
+    <!-- DESIGN SYSTEM -->
+    <div id="design-system" class="intro-section">
+      <h2>Design System Basics — Colours, Fonts & Rules</h2>
+      <p>Before we describe any screen, you need to understand the shared visual language. Every screen across all four portals uses these same colours, fonts, and spacing rules. Consistency is a trust signal for users.</p>
+      <table class="data-table" style="margin-top:16px;">
+        <thead><tr><th>Colour Name</th><th>Hex Code</th><th>Where It's Used</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Nexplumb Navy</strong></td><td>#0D2137</td><td>Top navigation bar, page headers, admin sidebar, important headings</td></tr>
+          <tr><td><strong>Nexplumb Blue</strong></td><td>#2E86AB</td><td>Clickable links, active sidebar items, verified badges, info icons</td></tr>
+          <tr><td><strong>Nexplumb Teal</strong></td><td>#2A9D8F</td><td>"Available" badges, booking confirmed messages, success states, progress bars</td></tr>
+          <tr><td><strong>Nexplumb Orange</strong></td><td>#E76F51</td><td>All primary "Book Now / Pay Now" buttons, urgent flags, notification dots</td></tr>
+          <tr><td><strong>Nexplumb Amber</strong></td><td>#E9C46A</td><td>Warning messages, pending status badges, Phase 2 labels</td></tr>
+          <tr><td><strong>Light Gray</strong></td><td>#F2F4F6</td><td>Page background, table row alternating colour, card backgrounds</td></tr>
+          <tr><td><strong>Body Text</strong></td><td>#1C2833</td><td>All standard text content on the page</td></tr>
+          <tr><td><strong>Secondary Text</strong></td><td>#717D7E</td><td>Smaller labels, captions, timestamps, placeholder text</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:16px;"><strong>Font:</strong> Arial is used for all text at this stage. Body text must never be smaller than 14px. All button labels are written in sentence case (like this) — never ALL CAPS.</p>
+      <p><strong>Buttons:</strong> The primary "Book Now" style button is orange (#E76F51), white text, 48px tall, 8px rounded corners. The secondary outlined button has a navy border, navy text, transparent background. On hover it fills navy with white text.</p>
+      <p><strong>Breakpoints (Responsive Design):</strong> Every screen must work at three sizes — Desktop (1280px wide), Tablet (768px wide), and Mobile Web (375px wide). Design desktop first, then simplify for smaller sizes.</p>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         PHASE 1 BANNER
+    ═════════════════════════════════════════ -->
+    <div class="phase-banner phase-1-banner">
+      <div class="phase-banner-label phase-1-label">Phase 1 · Weeks 1–8</div>
+      <div class="phase-banner-text"><strong>Core MVP — Customer Web Portal.</strong> These are the screens that absolutely must exist before Nexplumb can open to the public. Without all of these working together, the product cannot function.</div>
+    </div>
+
+    <div class="portal-divider">
+      <div class="portal-divider-line"></div>
+      <div class="portal-divider-badge badge-customer">🏠 Customer Web Portal</div>
+      <div class="portal-divider-line"></div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         CW-1: PUBLIC HOMEPAGE
+    ═════════════════════════════════════════ -->
+    <div id="cw1" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-cw">CW-1</div>
+        <div class="screen-card-header-text">
+          <h2>Public Homepage / Landing Page</h2>
+          <div class="url-line">URL: <span>nexplumb.com</span> &nbsp;·&nbsp; Accessible by anyone, logged in or not</div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+
+        <div class="purpose-block">
+          <strong>Purpose of This Screen</strong>
+          This is the first thing any visitor sees when they type nexplumb.com or arrive from a Google search. It must immediately answer three questions in the visitor's mind: "What is this?", "Can I trust it?", and "How do I get started?". It is also the most important page for Google Search ranking (SEO), so every piece of text must be written with that in mind.
+        </div>
+
+        <div class="callout callout-rule">
+          <div class="callout-icon">⚠️</div>
+          <div><strong>Design Rule:</strong> The homepage serves two masters — Google's search crawler and a first-time Nigerian customer who is skeptical. Every section must earn its place. No filler copy. The search bar is the single most important element on the page.</div>
+        </div>
+
+        <div class="section-title">Section 1 — Global Navigation Bar (Sticky Top)</div>
+        <div class="component-block">
+          <div class="component-block-header">
+            <div class="component-icon" style="background:rgba(13,33,55,0.1);">🔝</div>
+            Navigation Bar — Always Visible
+          </div>
+          <div class="component-block-body">
+            <p>This bar sits at the very top of the page and <strong>never disappears</strong> as the user scrolls down. It "sticks" to the top of the browser window at all times. This is called a "sticky" or "fixed" navbar.</p>
+            <ul class="element-list">
+              <li><strong>Left side:</strong> The Nexplumb logo in navy colour. Clicking it always takes the user back to the homepage from any page on the site.</li>
+              <li><strong>Centre links:</strong> Four navigation links — "How It Works", "Find an Artisan", "For Artisans", and "Pricing". These are text links, not buttons. They link to different sections of the site.</li>
+              <li><strong>Right side:</strong> A "Log In" text link (for returning users) and a "Get Started" button styled in orange (the primary brand colour). This orange button is the most important action in the navbar.</li>
+              <li><strong>Extra link:</strong> "Join as an Artisan" — a separate link (can be smaller, different colour) for tradespeople who want to sign up. Clicking this goes to the Artisan Registration page.</li>
+              <li><strong>On scroll behaviour:</strong> When the user starts scrolling down the page, the navbar background turns white with a subtle shadow underneath. This makes it readable against any page content below. Before scrolling, it appears transparent over the dark hero section.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-title">Section 2 — Hero Section (Main Banner)</div>
+        <div class="component-block">
+          <div class="component-block-header">
+            <div class="component-icon" style="background:rgba(231,111,81,0.1);">🌟</div>
+            Hero — The First Thing Eyes Land On
+          </div>
+          <div class="component-block-body">
+            <p>The "hero" is the large banner at the very top of the page, below the navbar. It takes up the full width of the screen and is usually 500–600px tall on desktop. The background is Nexplumb Navy (#0D2137). This is where visitors decide in seconds whether to stay or leave.</p>
+            <ul class="element-list">
+              <li><strong>Main headline (H1):</strong> Large text that says something like <em>"Your trusted artisan, one tap away"</em>. This must include the words "Lagos" and "Nigeria" somewhere visible on the hero for SEO purposes. Font must be bold, white, 44px minimum on desktop.</li>
+              <li><strong>Sub-headline:</strong> A shorter line below the headline explaining who the platform is for and where. Example: <em>"Find verified plumbers, electricians, and tradespeople near you in Lagos — instantly."</em> This is white text, smaller than the headline, about 18–20px.</li>
+              <li><strong>Search Bar:</strong> This is the most important element on the entire page. It is a large white box, full-width within a white card, with placeholder text: <em>"What do you need? (e.g. leaking pipe, electrical fault...)"</em>. Clicking it or pressing Enter takes the user to the Search Results page.</li>
+              <li><strong>Location Selector:</strong> Directly below the search bar — a field that either auto-detects the user's area (using their browser location) or lets them type an area name or LGA manually (e.g. "Yaba", "Surulere").</li>
+              <li><strong>Service Category Chips:</strong> Below the location field, a row of clickable pills/tags: "Plumbing · Electrical · Carpentry · Painting · Tiling". Each one is a quick shortcut — clicking "Plumbing" takes the user directly to filtered search results for plumbers.</li>
+              <li><strong>Hero Illustration:</strong> On the right side of the hero (desktop only), an illustration showing a Nigerian home, an artisan, and the Nexplumb shield/logo. This makes the page feel local and relevant, not like a generic foreign tech product.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-title">Section 3 — Trust Bar</div>
+        <div class="component-block">
+          <div class="component-block-header">
+            <div class="component-icon" style="background:rgba(42,157,143,0.12);">✅</div>
+            Trust Metrics — 3 Key Statistics
+          </div>
+          <div class="component-block-body">
+            <p>Immediately below the hero, a full-width dark band (same navy background or slightly darker) shows three important statistics side by side. These numbers build immediate trust with a skeptical visitor.</p>
+            <ul class="element-list">
+              <li><strong>Stat 1:</strong> "1,200+ Verified Artisans" — with a person/shield icon. This shows there are real people on the platform.</li>
+              <li><strong>Stat 2:</strong> "Escrow-Protected Payments" — with a padlock icon. This addresses the Nigerian customer's biggest fear: losing money to fraud.</li>
+              <li><strong>Stat 3:</strong> "4.8 / 5 Average Rating" — with a star icon. This shows quality and customer satisfaction.</li>
+              <li><strong>Layout:</strong> Three equal columns on desktop. Stack vertically on mobile. Each has: an icon, a bold large number/phrase, and a short label below.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-title">Section 4 — How It Works</div>
+        <div class="component-block">
+          <div class="component-block-header">
+            <div class="component-icon" style="background:rgba(46,134,171,0.1);">📋</div>
+            3-Step Process Explanation
+          </div>
+          <div class="component-block-body">
+            <p>This section explains the booking process in the simplest possible way. Many visitors will be first-time users of any artisan platform. This section removes fear by showing how simple it is.</p>
+            <ul class="element-list">
+              <li><strong>Section title:</strong> "Book a trusted artisan in 3 steps" — centred, bold, large.</li>
+              <li><strong>Step 1 — Search:</strong> A circle with "1" inside, an icon, bold title "Search", and a 2-line description. Example: "Type what you need or pick a category. We'll show you verified artisans near your location."</li>
+              <li><strong>Step 2 — Book & Pay Safely:</strong> Circle "2", icon, title, description. "Choose your artisan, pick a time, and pay through our secure escrow. Your money is protected until the job is done."</li>
+              <li><strong>Step 3 — Track & Confirm:</strong> Circle "3", icon, title, description. "Watch your artisan travel to you on a live map. Confirm when the job is complete and release payment."</li>
+              <li><strong>CTA below the steps:</strong> An orange "Find an artisan now" button. This gives the visitor a second chance to start searching after reading how it works.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-title">Section 5 — Featured Artisans</div>
+        <div class="component-block">
+          <div class="component-block-header">
+            <div class="component-icon" style="background:rgba(42,157,143,0.1);">👷</div>
+            Top-Rated Artisans Near You
+          </div>
+          <div class="component-block-body">
+            <p>A section that shows real artisans from the platform. This makes the site feel alive and trustworthy — not just a landing page with no actual service behind it.</p>
+            <ul class="element-list">
+              <li><strong>Title:</strong> "Top-rated artisans near you" with the user's location label (e.g. "in Lagos") shown next to it.</li>
+              <li><strong>Artisan Cards:</strong> A row of 4 cards on desktop (scrollable horizontally on mobile). Each card shows: artisan profile photo (circular), name, trade (e.g. "Plumber"), star rating, number of completed jobs, area/location, and a "View Profile" button.</li>
+              <li><strong>"See all artisans" link:</strong> At the end of the row, a text link that goes to the full search results page.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-title">Section 6 — Category SEO Sections</div>
+        <div class="component-block">
+          <div class="component-block-header">
+            <div class="component-icon" style="background:rgba(233,196,106,0.15);">🔍</div>
+            Trade-Specific Sections (Critical for Google)
+          </div>
+          <div class="component-block-body">
+            <p>These sections are one of the most important parts of the homepage from an SEO perspective. When someone Googles "plumber in Lagos" or "electrician near me in Nigeria", these sections are what helps Nexplumb appear in results.</p>
+            <ul class="element-list">
+              <li><strong>One section per trade category:</strong> "Plumbers in Lagos", "Electricians in Lagos", "Carpenters in Lagos", etc.</li>
+              <li><strong>Each section contains:</strong> A heading using the trade and city name (H2 tag for SEO), 3 featured artisan cards from that category, and a "Find more plumbers near you" CTA link.</li>
+              <li><strong>Why this matters:</strong> Google indexes text on the page. By writing "Plumbers in Lagos" as a real heading with real content beneath it, Nexplumb can rank when someone searches that phrase.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-title">Section 7 — Social Proof / Customer Reviews</div>
+        <div class="component-block">
+          <div class="component-block-header">
+            <div class="component-icon" style="background:rgba(42,157,143,0.1);">⭐</div>
+            Real Customer Testimonials
+          </div>
+          <div class="component-block-body">
+            <p>Three review cards from real customers who have completed bookings. This is called "social proof" — seeing other people's positive experiences makes new visitors trust the platform.</p>
+            <ul class="element-list">
+              <li><strong>Each review card shows:</strong> Customer photo (or avatar), first name only, their area (e.g. "Lekki"), the star rating they gave, and 2–3 sentences of their written review.</li>
+              <li><strong>Important rule:</strong> All reviews must come from real completed jobs. No made-up quotes.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-title">Section 8 — Footer</div>
+        <div class="component-block">
+          <div class="component-block-header">
+            <div class="component-icon" style="background:rgba(13,33,55,0.08);">🔗</div>
+            Site Footer — Bottom of Every Page
+          </div>
+          <div class="component-block-body">
+            <p>The footer appears at the bottom of every customer-facing page. It has a dark navy background and is divided into four columns of links.</p>
+            <ul class="element-list">
+              <li><strong>Column 1 — About Nexplumb:</strong> Links to About Us, How It Works, Blog, and Press.</li>
+              <li><strong>Column 2 — For Customers:</strong> Links to Find an Artisan, How Escrow Works, Safety Guarantee, and Pricing.</li>
+              <li><strong>Column 3 — For Artisans:</strong> Links to Join as an Artisan, How to Get Verified, Artisan Resources, and Training.</li>
+              <li><strong>Column 4 — Support:</strong> Links to Help Centre, Contact Us, Report an Issue, and FAQs.</li>
+              <li><strong>Social Icons:</strong> Row of icons for Twitter, Instagram, LinkedIn, Facebook, and YouTube.</li>
+              <li><strong>Legal Links:</strong> Small text at the very bottom — "Terms of Service · Privacy Policy · Escrow Policy".</li>
+              <li><strong>WhatsApp Floating Button:</strong> A green WhatsApp icon that floats in the bottom-right corner of the screen on every page. Clicking it opens a WhatsApp chat with the Nexplumb support team. This is an extremely important trust feature for Nigerian users who are very comfortable with WhatsApp.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         CW-SIGNUP / CW-LOGIN
+    ═════════════════════════════════════════ -->
+    <div id="cw-signup" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-cw">CW-S</div>
+        <div class="screen-card-header-text">
+          <h2>Customer Sign Up Page</h2>
+          <div class="url-line">URL: <span>nexplumb.com/register</span> &nbsp;·&nbsp; Triggered when clicking "Get Started" or "Book" without an account</div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block">
+          <strong>Purpose</strong>
+          This is the page where a new customer creates their Nexplumb account. The goal is to make this as fast and frictionless as possible. Requiring too many fields at sign-up causes people to leave. We collect only what is essential.
+        </div>
+
+        <div class="section-title">Layout</div>
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(13,33,55,0.08);">📝</div>Two-Panel Layout (Desktop)</div>
+          <div class="component-block-body">
+            <ul class="element-list">
+              <li><strong>Left panel (40% width):</strong> A navy background panel showing the Nexplumb logo, a brief statement like "Join thousands of Lagos residents who book trusted artisans safely", and the three trust stats (verified artisans, escrow protection, average rating). This panel reassures users that signing up is worthwhile.</li>
+              <li><strong>Right panel (60% width):</strong> White background containing the actual sign-up form. On mobile, only the form is shown (the left panel is hidden).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-title">Sign-Up Form Fields</div>
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(46,134,171,0.1);">✍️</div>Form Elements (Keep It Short)</div>
+          <div class="component-block-body">
+            <ul class="element-list">
+              <li><strong>Page title:</strong> "Create your account" — bold, 24px, navy colour.</li>
+              <li><strong>First Name field:</strong> Label above the field reads "First Name". Required. 48px tall input box.</li>
+              <li><strong>Phone Number field:</strong> Label reads "Phone Number". Required. Show Nigeria flag + "+234" prefix automatically. This is the main login identifier — no email required for basic accounts.</li>
+              <li><strong>Password field:</strong> Label reads "Create a password". A small eye icon on the right lets the user toggle to show/hide what they're typing. Minimum 8 characters. A small progress bar below shows password strength (weak/moderate/strong).</li>
+              <li><strong>Confirm Password field:</strong> "Repeat your password". Shows a green checkmark inline when both passwords match.</li>
+              <li><strong>Terms checkbox:</strong> "I agree to Nexplumb's Terms of Service and Privacy Policy." The words "Terms of Service" and "Privacy Policy" are clickable links. The checkbox must be ticked before the form can be submitted.</li>
+              <li><strong>Submit button:</strong> Full-width orange button, "Create Account". Shows a loading spinner while the account is being created.</li>
+              <li><strong>OTP Verification step:</strong> After clicking "Create Account", the form slides to a new screen asking the user to enter the 6-digit code sent to their phone via SMS. Auto-reads on Android. "Resend code" link appears after 60 seconds.</li>
+              <li><strong>"Already have an account?" link:</strong> Below the button. Links to the Login page.</li>
+              <li><strong>Social divider:</strong> "— or continue with —" between the form and a Google sign-in button (optional for Phase 2).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-icon">💡</div>
+          <div><strong>Beginner tip:</strong> Every form field needs a visible label above it — never just placeholder text that disappears when you start typing. This is both an accessibility requirement and a usability standard.</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="cw-login" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-cw">CW-L</div>
+        <div class="screen-card-header-text">
+          <h2>Customer Login Page</h2>
+          <div class="url-line">URL: <span>nexplumb.com/login</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block">
+          <strong>Purpose</strong>
+          Returning customers log in here to access their dashboard, manage bookings, and start new bookings. It must be fast — a returning user should be back in their account within 10 seconds.
+        </div>
+        <div class="section-title">Login Form</div>
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(42,157,143,0.1);">🔐</div>Login Fields</div>
+          <div class="component-block-body">
+            <ul class="element-list">
+              <li><strong>Phone Number field:</strong> Same as sign-up — "+234" prefix, Nigerian phone format.</li>
+              <li><strong>Password field:</strong> With show/hide toggle icon.</li>
+              <li><strong>"Forgot password?" link:</strong> Right-aligned above the submit button. Clicking this starts the password reset flow: enter phone number → receive OTP via SMS → set new password.</li>
+              <li><strong>Submit button:</strong> Full-width orange "Log In" button.</li>
+              <li><strong>Error state:</strong> If credentials are wrong, a red banner appears below the button saying: "Incorrect phone number or password. Please try again." — Never say which field is wrong (this is a security practice).</li>
+              <li><strong>"Don't have an account?" link:</strong> Below button. Links to Sign Up page.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         CW-2: SEARCH RESULTS
+    ═════════════════════════════════════════ -->
+    <div id="cw2" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-cw">CW-2</div>
+        <div class="screen-card-header-text">
+          <h2>Search Results Page</h2>
+          <div class="url-line">URL: <span>nexplumb.com/search?q=plumber&location=yaba&sort=rating</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block">
+          <strong>Purpose</strong>
+          The customer has typed what they need and pressed search. This page shows them all matching artisans with tools to narrow down their choice. It must balance showing enough information to make a decision, without being overwhelming.
+        </div>
+
+        <div class="section-title">Desktop Layout — Two Columns</div>
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(13,33,55,0.08);">📐</div>Left Panel — Filter Sidebar (280px wide)</div>
+          <div class="component-block-body">
+            <p>A panel fixed to the left side of the screen that allows the user to narrow their search results. It scrolls independently from the results on the right.</p>
+            <ul class="element-list">
+              <li><strong>"Clear all filters" link:</strong> At the very top of the sidebar. Resets all filters to their defaults and re-runs the search.</li>
+              <li><strong>Applied Filters Chips:</strong> Below the clear link, any active filters appear as small dismissible tags (e.g. "Rating: 4+" with an × to remove). This shows users what filters are currently active.</li>
+              <li><strong>Trade Category (checkboxes):</strong> A list of trades — Plumbing, Electrical, Carpentry, Painting, Tiling — with checkboxes. Users can select multiple. Checking or unchecking instantly updates the results on the right.</li>
+              <li><strong>Minimum Rating (star selector):</strong> Radio buttons or clickable stars — "3 stars and above", "4 stars and above", "5 stars only".</li>
+              <li><strong>Availability toggle:</strong> Three options — "Available Now", "Available Today", "Any Time".</li>
+              <li><strong>Distance Slider:</strong> A draggable slider from 1km to 20km — "Show artisans within [X] km of me".</li>
+              <li><strong>Price Range (dual-handle slider):</strong> Two draggable handles — set a minimum and maximum price. Shows "₦0 — ₦50,000+" with live price labels on the handles.</li>
+              <li><strong>Verified Only toggle:</strong> A simple on/off switch — when on, shows only NIN-verified artisans.</li>
+              <li><strong>Certification Level:</strong> "Any", "Nexplumb Certified", "Trade Tested" — radio buttons.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(231,111,81,0.1);">📋</div>Right Panel — Results List (Main Area)</div>
+          <div class="component-block-body">
+            <ul class="element-list">
+              <li><strong>Results count & location:</strong> At the top, text reads "Showing 24 plumbers in Yaba and nearby areas." This tells the user exactly what they're seeing.</li>
+              <li><strong>Sort dropdown:</strong> A dropdown on the right side of the results header with options: "Best match", "Highest rated", "Nearest to me", "Most jobs completed", "Lowest price".</li>
+              <li><strong>View toggle (List / Map):</strong> Two buttons at the top-right of the results area — a list icon and a map icon. Clicking Map switches to the Map View described below.</li>
+              <li><strong>Artisan Card (Horizontal, List View):</strong> Each artisan appears as a wide horizontal card. From left to right: Profile photo (80×80px circle), then in the centre: Name, trade, star rating with number of reviews, location tags, "Available Now" green badge (if applicable), a 2-line bio, and skill chips (e.g. "Burst pipes · Bathroom installation"). On the right side: price range (e.g. "₦8,000–₦15,000") and two buttons — "View Profile" (secondary, outlined) and "Book Now" (primary, orange).</li>
+              <li><strong>Verified badges on cards:</strong> Small inline badges — a shield icon for "ID Verified" and a star icon for "Nexplumb Certified". Shown directly on the artisan card so users don't have to open the profile to see trust signals.</li>
+              <li><strong>Pagination:</strong> Shows 24 artisans per page. At the bottom, either a "Load more" button OR numbered page buttons (1, 2, 3...).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(46,134,171,0.1);">🗺️</div>Map View (Toggle)</div>
+          <div class="component-block-body">
+            <p>When the user clicks the map icon, the layout changes to a 50/50 split. The left half shows an interactive map. The right half shows the scrollable artisan list.</p>
+            <ul class="element-list">
+              <li><strong>Map:</strong> Full-height embedded map using Google Maps or OpenStreetMap. Each available artisan appears as an orange pin with their photo thumbnail. Busy artisans appear as gray semi-transparent pins.</li>
+              <li><strong>Customer location:</strong> A distinct blue pin with "You" label marks the customer's current location.</li>
+              <li><strong>Hovering a list card:</strong> The corresponding artisan pin on the map highlights (grows slightly or changes colour).</li>
+              <li><strong>Clicking a map pin:</strong> Opens a small popup "mini-card" above the pin showing: artisan name, photo, rating, trade, price range, and a "View Profile" button.</li>
+              <li><strong>"Search this area" button:</strong> Appears when the user pans/drags the map to a new area. Clicking it re-runs the search to find artisans in the newly visible area.</li>
+              <li><strong>Available artisan pins:</strong> Animate with a subtle 2-second pulse to draw attention.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         CW-3: ARTISAN PUBLIC PROFILE
+    ═════════════════════════════════════════ -->
+    <div id="cw3" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-cw">CW-3</div>
+        <div class="screen-card-header-text">
+          <h2>Artisan Public Profile Page</h2>
+          <div class="url-line">URL: <span>nexplumb.com/artisans/[artisan-slug]</span> &nbsp;·&nbsp; Also indexed by Google</div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block">
+          <strong>Purpose</strong>
+          This is where the customer makes their final decision. After browsing search results, they click on one artisan and this page must convince them to book. Think of it as each artisan's personal "store page." It is also indexed by Google, so someone searching for a specific artisan's name should find this page.
+        </div>
+
+        <div class="section-title">Desktop Layout — Two Columns</div>
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(13,33,55,0.08);">👤</div>Left Column (700px) — Profile Content</div>
+          <div class="component-block-body">
+            <ul class="element-list">
+              <li><strong>Hero banner image:</strong> A wide, full-width image at the top showing the artisan's best job photo or a professional image of them working. Their circular profile photo is overlaid on the bottom-left corner of this banner.</li>
+              <li><strong>Name, trade, and location:</strong> Directly below the banner — "Chukwuemeka Okonkwo · Plumber · Surulere, Lagos" in large, bold text.</li>
+              <li><strong>Trust Badges Row:</strong> A horizontal row of coloured badge icons: "ID Verified" (blue shield), "Nexplumb Certified" (teal star), "Guarantor Verified" (green check), "Trade Tested" (orange ribbon). Each badge has a tooltip on hover that explains what it means.</li>
+              <li><strong>Stats Row:</strong> Four numbers in a horizontal row — large star rating (e.g. "4.8 ★"), number of reviews (e.g. "47 reviews"), jobs completed (e.g. "134 jobs"), member since date (e.g. "Member since Jan 2024").</li>
+              <li><strong>About Section:</strong> The artisan's written biography. 2–4 paragraphs describing their background, expertise, and what makes them the best choice. Minimum 150 words encouraged.</li>
+              <li><strong>Skills & Services:</strong> A row of pill/chip tags listing specific things this artisan can do: "Burst pipes · Bathroom installation · CCTV drain inspection · Boiler repair · Tap replacement".</li>
+              <li><strong>Portfolio Grid:</strong> A 3-column masonry grid (Pinterest-style) of before/after job photos. Clicking any photo opens a full-screen lightbox to see it larger.</li>
+              <li><strong>Service Area Map:</strong> A small embedded map showing the artisan's coverage zone — highlighted in teal colour showing which areas of Lagos they serve.</li>
+              <li><strong>Reviews Section:</strong> Each review shows: customer first name + their area + date of review + star rating + review text. A bar chart shows the distribution of 1-to-5 star ratings. "See all reviews" link expands to a paginated full list.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(231,111,81,0.1);">📌</div>Right Column (400px) — Sticky Booking Widget</div>
+          <div class="component-block-body">
+            <p>This panel stays fixed on the right side as the user scrolls through the profile (on desktop). It follows the user so the "Book" button is always visible.</p>
+            <ul class="element-list">
+              <li><strong>Price range:</strong> "₦8,000 – ₦15,000 per job" in large bold text. Labelled as "estimated" so the user knows this is a guide, not a fixed quote.</li>
+              <li><strong>Availability:</strong> A green "Available Now" badge, or if not available immediately, "Available from [date]".</li>
+              <li><strong>"Book This Artisan" button:</strong> The primary, full-width orange button. This is the most important button on the page. Clicking starts the booking flow (CW-4). If not logged in, shows a login prompt first.</li>
+              <li><strong>"Request a Quote" link:</strong> Below the main button. For complex jobs where the customer wants a price estimate first. Opens a quote request form.</li>
+              <li><strong>Save to Favourites:</strong> A heart icon button. Requires login. Saves the artisan to the customer's "Saved Artisans" list for easy future access.</li>
+              <li><strong>Share button:</strong> A share icon with options to "Copy link" and "Share via WhatsApp" — pre-fills a WhatsApp message.</li>
+              <li><strong>Escrow Trust Message:</strong> A shield icon with the text "Your payment is protected by Nexplumb Escrow" — in small teal text. Constantly reminds the customer their money is safe.</li>
+              <li><strong>"Message Artisan" button:</strong> Opens an in-app chat window. Available only after booking is confirmed, so it cannot be used to bypass the platform. Before booking, a note explains: "You can message after booking."</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         CW-4: BOOKING FLOW
+    ═════════════════════════════════════════ -->
+    <div id="cw4" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-cw">CW-4</div>
+        <div class="screen-card-header-text">
+          <h2>Web Booking Flow (Steps A–D)</h2>
+          <div class="url-line">URL: <span>nexplumb.com/book/[artisan-slug]</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block">
+          <strong>Purpose</strong>
+          The booking flow is a multi-step process that takes the customer from "I want to book this artisan" to "My booking is confirmed and paid". It is divided into 4 clear steps. Each step is on its own screen/view. The customer should never feel lost — they always know which step they're on and how many remain.
+        </div>
+
+        <div class="callout callout-info">
+          <div class="callout-icon">ℹ️</div>
+          <div><strong>Step Indicator:</strong> At the top of every step, a horizontal progress bar shows the 4 steps: <strong>Job Details → Schedule → Review & Pay → Confirmed</strong>. The current step is highlighted in teal. Completed steps show a navy checkmark. Upcoming steps are gray. This appears on Steps A, B, C, and D.</div>
+        </div>
+
+        <div class="section-title">Step A — Job Details (CW-4A)</div>
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(13,33,55,0.08);">📝</div>Describe the Job</div>
+          <div class="component-block-body">
+            <ul class="element-list">
+              <li><strong>Artisan summary card (persistent left panel):</strong> Shows the artisan's photo, name, trade, and rating. This stays visible on the left throughout the booking so the customer remembers who they're booking.</li>
+              <li><strong>Job Type Selector:</strong> A dropdown menu listing specific job types: "Pipe repair", "Drain unblocking", "Full bathroom installation", "Tap replacement", "Other (describe below)". Selecting a type pre-fills a suggested description.</li>
+              <li><strong>Job Description text area:</strong> A multi-line text box where the customer describes the problem in their own words. Minimum 30 characters required. A live character counter shows how many characters have been typed (e.g. "47 / 30 minimum").</li>
+              <li><strong>Photo Upload:</strong> A drag-and-drop zone with a dashed border that says "Drag photos here or click to browse files". Accepts up to 5 photos. As photos are uploaded, thumbnail previews appear in a row below with an × button to remove each one. Helps the artisan understand the job before arriving.</li>
+              <li><strong>Urgency Toggle:</strong> A toggle switch labelled "This is urgent (30% premium applies)". When switched on, an explanation appears: "Urgent bookings attract available artisans faster but add a 30% fee to the final total." The toggle must be very clear — customers need to understand the cost implication.</li>
+              <li><strong>Address input:</strong> A searchable address field with auto-complete powered by Google Places. As the customer types their address, suggestions appear in a dropdown list. They can also pin a location on a small map preview.</li>
+              <li><strong>"Continue" button:</strong> Full-width orange button at the bottom. Goes to Step B. Disabled until required fields are filled.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-title">Step B — Schedule (CW-4B)</div>
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(42,157,143,0.1);">📅</div>Choose Date and Time</div>
+          <div class="component-block-body">
+            <ul class="element-list">
+              <li><strong>Full Calendar View:</strong> A complete monthly calendar — not a dropdown date picker. The full month grid is shown, like a wall calendar. Available dates (when the artisan is free) are highlighted in teal. Dates in the past and dates when the artisan is fully booked appear gray and are not clickable.</li>
+              <li><strong>Time Slot Grid:</strong> When the customer clicks a date, a grid of available hour-blocks appears below the calendar. For example: "8:00 AM · 9:00 AM · 10:00 AM · 11:00 AM · 1:00 PM · 3:00 PM". Each slot is a clickable button. Unavailable slots are gray with a label like "Artisan booked".</li>
+              <li><strong>"Flexible" shortcut:</strong> A prominent option above the calendar: "Flexible — any time today or tomorrow (priority matching)". Customers who choose this get faster matching and are shown to more artisans, but pay a small priority premium.</li>
+              <li><strong>Estimated duration:</strong> Below the time slots, a note like "Pipe repair jobs typically take 1–2 hours." This helps the customer plan their day.</li>
+              <li><strong>"Back" and "Continue" buttons:</strong> Back returns to Step A. Continue moves to Step C (disabled until a date and time are selected).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-title">Step C — Review & Pay (CW-4C)</div>
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(231,111,81,0.1);">💳</div>Payment Step</div>
+          <div class="component-block-body">
+            <ul class="element-list">
+              <li><strong>Full job summary:</strong> A read-only summary box at the top showing everything the customer entered: artisan name, trade, job description, address, chosen date, chosen time. This is the "review" before payment.</li>
+              <li><strong>Price breakdown table:</strong> A clear table showing: "Service estimate: ₦10,000 · Platform booking fee: ₦500 · Materials (if requested): ₦0 · Urgent premium (if selected): ₦3,000 · Total: ₦13,500". Every line item is labelled and explained — no hidden fees.</li>
+              <li><strong>Escrow explanation banner:</strong> A full-width banner with a large shield graphic. Text: "Your payment is held safely by Nexplumb and only released to the artisan after you confirm the job is done. Full refund if the artisan does not show up." This banner is critically important for first-time customers.</li>
+              <li><strong>Payment Method Tabs:</strong> Four tabs the customer can switch between — "Debit Card", "Bank Transfer", "USSD Code", "Wallet Balance".</li>
+              <li><strong>Debit Card tab:</strong> Inline Paystack payment form — card number, expiry, CVV. No redirect to another website. All within the Nexplumb page.</li>
+              <li><strong>Bank Transfer tab:</strong> Shows a Nexplumb escrow account number and a unique reference code. Text: "Transfer exactly ₦13,500 to this account. Your booking will be confirmed automatically when payment is received." A "Payment confirmed" status updates live on screen.</li>
+              <li><strong>USSD tab:</strong> Shows the USSD code the customer can dial on their phone (e.g. *737*[amount]*[ref]# for GT Bank). Step-by-step instructions for each major bank are shown.</li>
+              <li><strong>Wallet Balance tab:</strong> Shows the customer's Nexplumb wallet balance. "Use ₦13,500 from your wallet balance of ₦20,000." Instant confirmation.</li>
+              <li><strong>"Confirm & Pay ₦13,500" button:</strong> Full-width orange button. The total amount is shown in the button text so the customer sees exactly what they're paying. Below the button: a padlock icon and the text "Secured by Nexplumb Escrow and Paystack."</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-title">Step D — Booking Confirmed (CW-4D)</div>
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(42,157,143,0.12);">🎉</div>Success Screen</div>
+          <div class="component-block-body">
+            <ul class="element-list">
+              <li><strong>Animated checkmark:</strong> A large teal animated checkmark that draws itself on screen. Below it: "Booking Confirmed!" in large navy bold text.</li>
+              <li><strong>Booking Reference Number:</strong> A unique code (e.g. "NX-2024-00847") shown in large monospace font. A "Copy" button lets the customer copy it to their clipboard. This reference is how they track or discuss the booking with support.</li>
+              <li><strong>Summary card:</strong> Shows artisan photo, name, job type, date, and time — a neat summary of everything that was just booked.</li>
+              <li><strong>"Track Your Artisan" button:</strong> Primary orange button. Takes the customer to the Live Tracking page (CW-5) immediately.</li>
+              <li><strong>"Add to Google Calendar" button:</strong> Adds the job appointment to their Google Calendar with artisan name, date/time, and address pre-filled.</li>
+              <li><strong>"Share via WhatsApp" button:</strong> Opens WhatsApp with a pre-written message: "I just booked a plumber on Nexplumb! Reference: NX-2024-00847".</li>
+              <li><strong>"View your bookings" link:</strong> Takes the customer to their dashboard where all bookings are listed.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         CW-5: LIVE TRACKING
+    ═════════════════════════════════════════ -->
+    <div id="cw5" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-cw">CW-5</div>
+        <div class="screen-card-header-text">
+          <h2>Live Job Tracking Page</h2>
+          <div class="url-line">URL: <span>nexplumb.com/jobs/[job-id]/track</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block">
+          <strong>Purpose</strong>
+          This is the "Bolt/Uber moment" for Nexplumb — the page where the customer watches their artisan travel to them in real time on a map. This is one of the biggest trust and delight features of the entire platform. The customer should feel completely informed and in control at all times.
+        </div>
+
+        <div class="section-title">Desktop Layout — Full Width Split (Two Panels)</div>
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(13,33,55,0.08);">📊</div>Left Panel (420px) — Job & Status Information</div>
+          <div class="component-block-body">
+            <ul class="element-list">
+              <li><strong>Job Status Progress Bar:</strong> A horizontal stepper at the top: "Confirmed → En Route → On Site → Job Complete". The current status is highlighted in teal with a filled circle. Completed stages are filled navy with a checkmark.</li>
+              <li><strong>Current Status Message:</strong> A large, readable message below the stepper. Examples: "Chukwuemeka is on his way — estimated arrival 12 minutes" or "Chukwuemeka has arrived at your location."</li>
+              <li><strong>ETA Countdown:</strong> A large "~12 min" countdown that updates in real time as the artisan moves closer. Updates every 10–15 seconds.</li>
+              <li><strong>Distance:</strong> "2.3 km away" — updates as the artisan moves.</li>
+              <li><strong>Artisan Strip:</strong> A section showing the artisan's large profile photo, full name, trade, star rating, and job count. This reminds the customer who is coming.</li>
+              <li><strong>Contact options:</strong> Two buttons — "Call Artisan" (uses a masked phone number so real numbers are never shared) and "Send Message" (opens in-app chat).</li>
+              <li><strong>Job Details (accordion):</strong> A collapsible section showing the job description, address, and booking reference. Collapsed by default to keep the screen clean.</li>
+              <li><strong>"Report an issue" button:</strong> Always visible at the bottom of the left panel. Opens a modal where the customer can report a problem (artisan hasn't arrived, job description mismatch, etc.).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(46,134,171,0.1);">🗺️</div>Right Panel — Live Map (60% of screen width)</div>
+          <div class="component-block-body">
+            <ul class="element-list">
+              <li><strong>Full-height embedded map.</strong></li>
+              <li><strong>Customer location pin:</strong> Blue pin with a house icon and "Your location" label.</li>
+              <li><strong>Artisan location pin:</strong> Animated orange pin with the artisan's profile photo thumbnail inside it. This pin moves smoothly across the map every 10–15 seconds as the artisan travels.</li>
+              <li><strong>Route line:</strong> A dashed orange line connecting the artisan pin to the customer pin — like a GPS navigation route line. Updates as the artisan moves. Disappears when artisan arrives.</li>
+              <li><strong>ETA label:</strong> A small text label mid-route showing the remaining time (e.g. "~12 min").</li>
+              <li><strong>Map auto-centres:</strong> The map automatically adjusts to always keep both pins visible.</li>
+              <li><strong>"Open in Google Maps" link:</strong> At the bottom of the map panel. For customers who want to open the route in their phone's native map app.</li>
+              <li><strong>GPS signal lost state:</strong> If the artisan's phone loses signal, the map shows: "Artisan location temporarily unavailable — last seen 3 min ago." Never leave the customer with a frozen map and no explanation. The call button is highlighted prominently as the fallback.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-title">Status Transitions</div>
+        <table class="data-table">
+          <thead><tr><th>Artisan Action (on mobile app)</th><th>What Customer Sees on Web</th></tr></thead>
+          <tbody>
+            <tr><td>Artisan presses "On My Way"</td><td>Status changes to "En Route". Map activates and shows route line. ETA countdown begins.</td></tr>
+            <tr><td>Artisan presses "I've Arrived"</td><td>Status changes to "On Site". Route line disappears. Message: "Artisan is at your location."</td></tr>
+            <tr><td>Artisan presses "Job Started"</td><td>Status changes to "In Progress". A job timer starts counting up.</td></tr>
+            <tr><td>Artisan presses "Job Complete" + uploads photos</td><td>A full-page prompt appears asking the customer to confirm the job is done and release payment.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         CW-6: CUSTOMER DASHBOARD
+    ═════════════════════════════════════════ -->
+    <div id="cw6" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-cw">CW-6</div>
+        <div class="screen-card-header-text">
+          <h2>Customer Dashboard</h2>
+          <div class="url-line">URL: <span>app.nexplumb.com/dashboard</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block">
+          <strong>Purpose</strong>
+          The logged-in customer's personal hub. Everything about their account is accessible from here — active bookings, history, saved artisans, payments, messages, and settings.
+        </div>
+
+        <div class="section-title">Sidebar Navigation (Left, Persistent)</div>
+        <ul class="element-list">
+          <li><strong>Overview</strong> — Summary of current bookings and recent activity</li>
+          <li><strong>My Bookings</strong> — Full history of all bookings (active, upcoming, completed, cancelled, disputed)</li>
+          <li><strong>Saved Artisans</strong> — Favourited artisans the customer has hearted</li>
+          <li><strong>Payments</strong> — Transaction history, receipts, and refund status</li>
+          <li><strong>Messages</strong> — All conversations with artisans</li>
+          <li><strong>Settings</strong> — Profile details, notifications, address book, language preference</li>
+          <li><strong>Get Help</strong> — Support chat, FAQs, and report an issue</li>
+        </ul>
+
+        <div class="section-title">Overview Tab (Default Landing Tab)</div>
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(42,157,143,0.1);">📊</div>Dashboard Overview Content</div>
+          <div class="component-block-body">
+            <ul class="element-list">
+              <li><strong>Active Booking Card (if one exists):</strong> At the very top of the page — the most prominent element. Shows artisan photo, job type, current status badge, and a large "Track Now" button in orange. This ensures a customer with an active booking never has to hunt for it.</li>
+              <li><strong>Upcoming Bookings Timeline:</strong> A timeline view of the next 3 confirmed future bookings. Each shows artisan name, trade, date, and time. A "View details" link for each.</li>
+              <li><strong>Recent Activity Feed:</strong> The last 5 platform events — "Payment of ₦12,000 received", "Emeka replied to your review", "Booking NX-847 confirmed". Each item has an icon, a description, and a timestamp.</li>
+              <li><strong>Quick Stats Row:</strong> Four metrics in card boxes — "Total Jobs: 7", "Average Rating Given: 4.3 ★", "Total Spent: ₦84,500", "Loyalty Points: 350 NexPoints".</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-title">My Bookings Tab</div>
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(46,134,171,0.1);">📋</div>Booking History</div>
+          <div class="component-block-body">
+            <ul class="element-list">
+              <li><strong>Filter tabs:</strong> "All · Active · Upcoming · Completed · Cancelled · Disputed" — clicking each tab filters the list below instantly.</li>
+              <li><strong>Booking card:</strong> Each booking shows job type, artisan name + photo, date, status badge (colour-coded pill), amount paid, and action buttons.</li>
+              <li><strong>Action buttons per booking:</strong> "View details" (opens full booking detail), "Download receipt" (PDF), "Leave review" (if completed, not yet reviewed), "Book again" (pre-fills the booking form with same artisan and similar job details — major retention feature), "Report issue" (opens dispute form).</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         ARTISAN PORTAL DIVIDER
+    ═════════════════════════════════════════ -->
+    <div class="portal-divider">
+      <div class="portal-divider-line"></div>
+      <div class="portal-divider-badge badge-artisan">🔧 Artisan Web Portal</div>
+      <div class="portal-divider-line"></div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         AW-1: ARTISAN REGISTRATION
+    ═════════════════════════════════════════ -->
+    <div id="aw1" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-aw">AW-1</div>
+        <div class="screen-card-header-text">
+          <h2>Artisan Registration — Web</h2>
+          <div class="url-line">URL: <span>nexplumb.com/join-as-artisan</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block">
+          <strong>Purpose</strong>
+          This is where a plumber, electrician, carpenter, or other tradesperson signs up to offer their services on Nexplumb. The web version is more complete than the mobile app version — it has drag-and-drop photo upload, larger text areas, and makes it easier to enter sensitive information like bank and BVN details from a trusted desktop environment.
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-icon">💡</div>
+          <div><strong>Why web is better for artisan registration:</strong> Uploading portfolio photos by drag-and-drop from a laptop is far easier than taking photos on a phone. Bank account and BVN entry feels safer on a desktop browser. Rich bio text areas encourage more complete profiles, which lead to more bookings.</div>
+        </div>
+
+        <div class="section-title">4-Step Registration Wizard</div>
+
+        <ol class="step-list">
+          <li>
+            <strong>Step 1 — Personal Information</strong>
+            Fields: Full legal name · Phone number (primary login) · Email address (optional) · NIN (National Identification Number) — the most important verification field · Current area/LGA in Lagos · Trade category (dropdown: Plumbing, Electrical, Carpentry, Painting, Tiling, Other) · Years of experience (dropdown: Less than 1 year / 1–3 years / 3–5 years / 5–10 years / 10+ years). All fields have labels above them. NIN field has an info tooltip explaining why it's needed: "Your NIN is used to verify your identity. It is encrypted and never shared publicly."
+          </li>
+          <li>
+            <strong>Step 2 — Profile Photo</strong>
+            A large drag-and-drop zone with a camera icon in the centre. Text: "Drag your photo here or click to upload." Alternatively, a "Use webcam" button opens the computer's webcam with a circular guide overlay so the artisan can take a professional-looking headshot right on screen. The photo is previewed instantly after upload. A crop tool lets the artisan adjust the framing.
+          </li>
+          <li>
+            <strong>Step 3 — Portfolio Photos</strong>
+            A grid where the artisan can upload photos of their past work. Drag-and-drop multiple images at once. Each uploaded photo has a caption field below it (e.g. "Bathroom pipe installation — Ikeja, Lagos 2023"). A "Before / After" toggle label can be set per photo, which will display them as a comparison on the public profile. Minimum 3 photos encouraged. More photos = higher profile completeness score.
+          </li>
+          <li>
+            <strong>Step 4 — Account & Verification Details</strong>
+            Bank name (dropdown of Nigerian banks) · Bank account number · BVN (Bank Verification Number) — required for payouts · Guarantor 1: Full name + phone number + relationship to artisan · Guarantor 2: Full name + phone number + relationship. Explanation text: "Your guarantors are people who can vouch for you. They will not be contacted unless there is a dispute. Their details are kept private."
+          </li>
+        </ol>
+
+        <div class="section-title">Review Screen (Before Submission)</div>
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(42,157,143,0.1);">👁️</div>Profile Preview</div>
+          <div class="component-block-body">
+            <p>Before the artisan clicks "Submit", a full preview of their public profile is shown — exactly as customers will see it. This encourages artisans to fill out more details if their profile looks thin. A note at the top: "This is what your public profile will look like to customers."</p>
+            <p>Below the preview: a "Go back and edit" link and a large orange "Submit Profile" button. On submission: "We'll verify your details within 24 hours. You will receive an SMS when your profile is approved and goes live."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         AW-2: ARTISAN DASHBOARD
+    ═════════════════════════════════════════ -->
+    <div id="aw2" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-aw">AW-2</div>
+        <div class="screen-card-header-text">
+          <h2>Artisan Dashboard (Web)</h2>
+          <div class="url-line">URL: <span>app.nexplumb.com/artisan/dashboard</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block">
+          <strong>Purpose</strong>
+          This is the artisan's "business command centre". When a plumber sits down at a computer with time to spare, this is where they review their performance, manage their profile, check their earnings in detail, and plan their growth on the platform.
+        </div>
+
+        <div class="section-title">Left Sidebar Navigation (Fixed, Always Visible)</div>
+        <ul class="element-list">
+          <li><strong>Dashboard Overview</strong> — performance metrics and summary</li>
+          <li><strong>My Jobs</strong> — all active, upcoming, and historical jobs</li>
+          <li><strong>Earnings &amp; Payouts</strong> — income tracking and withdrawals</li>
+          <li><strong>My Profile</strong> — profile editor with live preview</li>
+          <li><strong>Training &amp; Certification</strong> — trade test and courses</li>
+          <li><strong>Materials</strong> — link to materials marketplace (Phase 2)</li>
+          <li><strong>Reviews</strong> — read and respond to customer reviews</li>
+          <li><strong>Settings</strong> — account, notifications, bank details</li>
+        </ul>
+
+        <div class="section-title">Dashboard Overview — Metric Cards</div>
+        <div class="component-block">
+          <div class="component-block-header"><div class="component-icon" style="background:rgba(231,111,81,0.1);">📈</div>5 Key Performance Metric Cards</div>
+          <div class="component-block-body">
+            <p>A horizontal row of 5 cards at the top of the dashboard page. Each gives a snapshot of one key number.</p>
+            <table class="data-table">
+              <thead><tr><th>Card</th><th>What It Shows</th><th>Additional Detail</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Today's Earnings</strong></td><td>₦X earned today</td><td>Mini spark-line graph showing the last 7 days of earnings for trend context</td></tr>
+                <tr><td><strong>Active Jobs</strong></td><td>Number of currently active jobs</td><td>"View" link that jumps to the Jobs tab filtered to active</td></tr>
+                <tr><td><strong>Profile Views</strong></td><td>How many customers viewed the artisan's profile this week</td><td>A trend arrow (up = more views than last week, down = fewer)</td></tr>
+                <tr><td><strong>Rating</strong></td><td>Current average star rating</td><td>Number of total reviews. "Read reviews" link</td></tr>
+                <tr><td><strong>Completion Rate</strong></td><td>% of accepted jobs that were completed</td><td>Benchmark comparison: "Platform average: 92%" shown in smaller text</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- AW JOBS / EARNINGS / PROFILE / REVIEWS -->
+    <div id="aw-jobs" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-aw">AW-3</div>
+        <div class="screen-card-header-text">
+          <h2>My Jobs Tab</h2>
+          <div class="url-line">URL: <span>app.nexplumb.com/artisan/jobs</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>The artisan can see all their jobs across different statuses — what is active right now, what is coming up, and the full history of past work.</div>
+        <div class="section-title">Filter Tabs and Job Cards</div>
+        <ul class="element-list">
+          <li><strong>Filter tabs across the top:</strong> "Active · Upcoming · Completed · Cancelled · All". Clicking switches the list below.</li>
+          <li><strong>Job card layout:</strong> Each job row shows: job type icon + customer area + date + escrow amount + current status badge + duration (how long the job took).</li>
+          <li><strong>Click a job card:</strong> Opens a detailed view of that specific job — full description, customer area, job timeline (when each status changed), artisan notes, before/after photos uploaded, and the receipt/invoice for download.</li>
+          <li><strong>Search bar:</strong> Artisans with many jobs can search by job type, date range, or reference number.</li>
+          <li><strong>Export:</strong> "Download CSV" button exports job history for the artisan's own records or accounting purposes.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="aw-earnings" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-aw">AW-4</div>
+        <div class="screen-card-header-text">
+          <h2>Earnings &amp; Payouts Tab</h2>
+          <div class="url-line">URL: <span>app.nexplumb.com/artisan/earnings</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>Artisans can see a clear picture of how much money they have earned, what is pending release from escrow, and how to withdraw their available balance to their bank account.</div>
+        <div class="section-title">Earnings Screen Components</div>
+        <ul class="element-list">
+          <li><strong>Balance Widget (top of page):</strong> Three large numbers in a prominent card — "Available: ₦24,500" (money that can be withdrawn now) · "Pending: ₦8,000" (in escrow, awaiting job confirmation) · "Total Earned: ₦312,000" (all-time lifetime earnings). Each number is in a clearly labelled column.</li>
+          <li><strong>"Withdraw to Bank" button:</strong> Large orange primary button. Opens a modal where the artisan enters the amount to withdraw. Their verified bank account details are shown (account number, bank name). A "Confirm withdrawal" button initiates the transfer. An SMS confirmation is sent when the transfer is successful.</li>
+          <li><strong>Earnings Bar Chart:</strong> A vertical bar chart showing daily earnings over the last 30 days. Each bar represents one day. Hovering a bar shows a tooltip: "Wednesday, 14 Feb: ₦5,200". The artisan can clearly see which days were most profitable.</li>
+          <li><strong>Date filter:</strong> Dropdown to change the chart period — "This week / This month / Last 3 months / Custom date range".</li>
+          <li><strong>Transaction Table:</strong> Below the chart, a table listing every individual transaction. Columns: Date · Job ID · Customer area · Trade category · Amount · Commission deducted · Net amount received · Status (Completed/Pending).</li>
+          <li><strong>"Download CSV" button:</strong> Exports the transaction table for external accounting. This is critical for artisans who want to build a formal financial history.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="aw-profile" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-aw">AW-5</div>
+        <div class="screen-card-header-text">
+          <h2>Profile Editor Tab</h2>
+          <div class="url-line">URL: <span>app.nexplumb.com/artisan/profile</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>Artisans manage and improve their public-facing profile. Changes made here instantly update what customers see when they visit the artisan's public profile page.</div>
+        <div class="section-title">Profile Editor Components</div>
+        <ul class="element-list">
+          <li><strong>Two-panel layout:</strong> Left panel is the editor (form fields). Right panel shows a live preview of how the public profile will look as the artisan edits. Changes update the preview in real time.</li>
+          <li><strong>"Preview as customer" toggle:</strong> Switches the right panel to an exact replica of the public profile, exactly as a customer would see it. Useful for quality-checking before publishing.</li>
+          <li><strong>Profile Completeness Bar:</strong> At the top of the editor — a progress bar showing a percentage (e.g. "75% complete"). Below it, a list of what is missing: "Add a portfolio photo to reach 90%." This gamification encourages artisans to fill out more details, which leads to more bookings.</li>
+          <li><strong>Editable sections:</strong> Bio (multi-line text area) · Skills tags (add/remove chip tags) · Service area (a map where the artisan draws or sets their coverage zone — the areas they are willing to travel to) · Availability schedule (a weekly timetable: Mon–Sun, set which hours they are available each day).</li>
+          <li><strong>Portfolio Manager:</strong> A drag-and-drop grid for uploading, removing, reordering, and captioning portfolio photos. Before/after label toggle per photo.</li>
+          <li><strong>"Save changes" button:</strong> At the bottom of the form. Shows a loading state, then a green "Profile updated" success toast notification.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="aw-reviews" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-aw">AW-6</div>
+        <div class="screen-card-header-text">
+          <h2>Reviews Tab</h2>
+          <div class="url-line">URL: <span>app.nexplumb.com/artisan/reviews</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>Artisans read all customer reviews left for them and can publicly reply to each review. Responding to reviews — especially negative ones — shows professionalism and builds trust with future customers.</div>
+        <div class="section-title">Reviews Screen Components</div>
+        <ul class="element-list">
+          <li><strong>Rating summary at top:</strong> The artisan's overall average score in large text (e.g. "4.8 ★"), total review count, and a distribution bar chart showing how many 5-star, 4-star, 3-star, 2-star, and 1-star reviews they have received.</li>
+          <li><strong>Review list:</strong> Each review card shows customer name + area + date + star rating + review text. Below each review, an "Add a reply" button — clicking opens a text area where the artisan types a public response.</li>
+          <li><strong>Published reply:</strong> Once the artisan submits a reply, it appears indented below the customer review on the public profile page, attributed as "Artisan's response".</li>
+          <li><strong>"Flag for review" button (not "Delete"):</strong> Artisans cannot delete reviews. But if a review is unfair, abusive, or factually incorrect, they can flag it for admin review. The flag button opens a form asking for the reason.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         ADMIN DASHBOARD DIVIDER
+    ═════════════════════════════════════════ -->
+    <div class="portal-divider">
+      <div class="portal-divider-line"></div>
+      <div class="portal-divider-badge badge-admin">⚙️ Admin Dashboard</div>
+      <div class="portal-divider-line"></div>
+    </div>
+
+    <div class="callout callout-info">
+      <div class="callout-icon">ℹ️</div>
+      <div><strong>Admin Dashboard is desktop-first only.</strong> This portal is used exclusively by the Nexplumb internal operations team on desktop computers. It does not need to be optimised for mobile. It prioritises information density, speed, and clarity over beauty. Every screen must help the ops team act faster.</div>
+    </div>
+
+    <!-- AD-1 -->
+    <div id="ad1" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-ad">AD-1</div>
+        <div class="screen-card-header-text">
+          <h2>Admin Overview Page</h2>
+          <div class="url-line">URL: <span>admin.nexplumb.com/overview</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>This is the admin team's daily starting point. It shows the current health of the entire platform at a glance — what is happening right now, what needs urgent attention, and what the numbers look like today.</div>
+        <div class="section-title">Top Metric Strip — Real-Time Numbers</div>
+        <ul class="element-list">
+          <li><strong>5 metric cards in a horizontal row:</strong> "Jobs active right now · Jobs completed today · New users today (customers + artisans combined) · Revenue today (₦) · Open disputes".</li>
+          <li><strong>Each metric card shows:</strong> The current number in large bold text + a trend indicator vs. yesterday (green arrow up if higher, red arrow down if lower).</li>
+          <li><strong>Disputes card urgency:</strong> The disputes card turns amber/orange if more than 5 disputes are open, and red if more than 10 are open. This visual urgency signal means the team never misses a dispute backlog building up.</li>
+        </ul>
+        <div class="section-title">Main Content — Two Columns</div>
+        <ul class="element-list">
+          <li><strong>Left column (60%) — Live Jobs Map:</strong> A full embedded map showing ALL active jobs across Lagos as orange pins. Each pin is colour-coded by status (pending = amber, en route = blue, on site = teal). Clicking any pin opens a popup with: Job ID, customer area, artisan name, trade, elapsed time.</li>
+          <li><strong>Left column below map — Active Jobs Table:</strong> A real-time table of all active jobs. Columns: Job ID · Customer name (masked phone) · Artisan name · Trade · Area/LGA · Current Status · Time Since Booking.</li>
+          <li><strong>Right column (40%) — Dispute Queue:</strong> A list of open disputes sorted by urgency (oldest and highest-value first). The top item is always shown fully expanded. Each item shows: dispute ID, customer vs artisan names, amount, reason, and how long it has been open (with a colour-coded SLA timer).</li>
+          <li><strong>Right column — Verification Queue:</strong> New artisan applications awaiting review. Shows count of pending applications with a "Review now" link.</li>
+          <li><strong>Right column — Flagged Users:</strong> Accounts that have been flagged by the algorithm or reported by users. A count badge and "Review" link.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- AD-2 -->
+    <div id="ad2" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-ad">AD-2</div>
+        <div class="screen-card-header-text">
+          <h2>Jobs Management Table</h2>
+          <div class="url-line">URL: <span>admin.nexplumb.com/jobs</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>The admin team can see every single job in the system — past and present — and take action on any of them. This is the full pipeline view.</div>
+        <div class="section-title">Main Jobs Table</div>
+        <table class="data-table">
+          <thead><tr><th>Column</th><th>Content</th><th>Sortable?</th></tr></thead>
+          <tbody>
+            <tr><td>Job ID</td><td>Unique reference number. Clickable — opens the full job detail page.</td><td>No</td></tr>
+            <tr><td>Customer</td><td>First name + masked phone. Clicking goes to customer profile.</td><td>Yes</td></tr>
+            <tr><td>Artisan</td><td>Name + trade + rating. Clicking goes to artisan profile.</td><td>Yes</td></tr>
+            <tr><td>Service</td><td>Trade category (Plumbing, Electrical, etc.)</td><td>Yes</td></tr>
+            <tr><td>Location</td><td>Area / LGA of the job</td><td>Yes</td></tr>
+            <tr><td>Status</td><td>Colour-coded pill badge: Pending (amber) / Active (blue) / Complete (teal) / Disputed (red)</td><td>Yes</td></tr>
+            <tr><td>Amount</td><td>Escrow amount held in ₦</td><td>Yes</td></tr>
+            <tr><td>Booked At</td><td>Date and time of booking creation</td><td>Yes</td></tr>
+            <tr><td>Last Update</td><td>Timestamp of the most recent status change</td><td>Yes</td></tr>
+            <tr><td>Actions</td><td>Buttons: View · Flag · Resolve · Force Refund · Message both parties</td><td>No</td></tr>
+          </tbody>
+        </table>
+        <div class="section-title">Filter Panel (Collapsible Left Sidebar)</div>
+        <ul class="element-list">
+          <li><strong>Filters:</strong> Date range picker · Status (multi-select checkboxes) · Trade category · Area/LGA · Specific artisan name · Specific customer name · Amount range · "Flagged jobs only" toggle.</li>
+          <li><strong>"Export CSV" button:</strong> Always available at the top of the results. Exports filtered or unfiltered results as a spreadsheet.</li>
+          <li><strong>Saved filter presets:</strong> Admin users can save frequently used filter combinations. Pre-built presets: "Today's disputes", "Unreviewed artisans", "High-value jobs (>₦50,000)".</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- AD-3 -->
+    <div id="ad3" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-ad">AD-3</div>
+        <div class="screen-card-header-text">
+          <h2>Dispute Resolution Centre</h2>
+          <div class="url-line">URL: <span>admin.nexplumb.com/disputes</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>When a customer and artisan disagree about whether a job was done correctly or whether money should be released, the admin team uses this screen to investigate and make a fair decision. Target: resolve every dispute within 48 hours.</div>
+        <div class="section-title">Dispute List View</div>
+        <ul class="element-list">
+          <li><strong>Sorted by time open (oldest first by default):</strong> This ensures the team never forgets about a dispute that has been open for a long time.</li>
+          <li><strong>SLA Timer:</strong> Each dispute shows a timer. Green if open less than 24 hours, amber if 24–48 hours, red if more than 48 hours open. This creates visual urgency for the team.</li>
+          <li><strong>High-priority flag:</strong> Disputes involving more than ₦20,000 are automatically flagged with a "High Value" indicator.</li>
+          <li><strong>Dispute list columns:</strong> Dispute ID · Customer name · Artisan name · Job amount · Dispute reason (category) · Time open · Status (Open/Under Review/Resolved).</li>
+        </ul>
+        <div class="section-title">Dispute Detail View (Click Any Row)</div>
+        <ul class="element-list">
+          <li><strong>Left panel — Full Timeline:</strong> A chronological feed of every event related to this job from booking to the dispute filing. "Job booked — Feb 14, 2:30pm" → "Artisan arrived — Feb 14, 4:15pm" → "Customer filed dispute — Feb 14, 7:00pm."</li>
+          <li><strong>Centre panel — Evidence Side-by-Side:</strong> Left side: Customer's written statement + any photos they uploaded as evidence. Right side: Artisan's written statement + any photos they uploaded. Both statements visible simultaneously for easy comparison.</li>
+          <li><strong>Right panel — Transaction Record:</strong> Total escrow amount held, payment method used, job photos (before/after from artisan), and the full chat history between customer and artisan.</li>
+          <li><strong>Decision Panel at Bottom — 3 Resolution Buttons:</strong>
+            <ul class="element-list" style="margin-top:8px;">
+              <li><strong>"Release to Artisan" (green button):</strong> Escrow is released to the artisan. A mandatory note field must be filled before confirming. Both parties are automatically notified by SMS and in-app.</li>
+              <li><strong>"Refund to Customer" (orange button):</strong> Escrow is returned to the customer. Mandatory note required. Both parties notified.</li>
+              <li><strong>"Partial Resolution" (gray button):</strong> The admin splits the amount — input fields for how much goes to each party. Both notified.</li>
+            </ul>
+          </li>
+          <li><strong>Audit trail:</strong> Every decision is permanently logged — who made the decision, when, and what the mandatory note said. Cannot be reversed without a manager override.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- AD-4 -->
+    <div id="ad4" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-ad">AD-4</div>
+        <div class="screen-card-header-text">
+          <h2>Artisan Verification Queue</h2>
+          <div class="url-line">URL: <span>admin.nexplumb.com/verification</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>Every artisan who registers must be manually reviewed before their profile goes live and they can start receiving jobs. Target: review every application within 24 hours of submission.</div>
+        <div class="section-title">Queue List</div>
+        <ul class="element-list">
+          <li><strong>Sorted by submission time (oldest first):</strong> Ensures no application is ignored.</li>
+          <li><strong>Queue columns:</strong> Artisan name · Trade category · Location · NIN Status (auto-verified green checkmark, or amber "manual review needed") · BVN Status · Profile photo quality indicator · Time waiting · Action buttons.</li>
+        </ul>
+        <div class="section-title">Application Detail View (Click Any Row)</div>
+        <ul class="element-list">
+          <li><strong>Profile preview panel:</strong> Shows how the artisan's profile will look to customers if approved. The reviewer sees exactly what customers will see.</li>
+          <li><strong>Document panel:</strong> Shows NIN card photo, the artisan's profile headshot, portfolio photos they uploaded, and guarantor details.</li>
+          <li><strong>NIMC Verification result:</strong> The result of the automatic NIN check via the government NIMC API is shown inline — "Identity verified: Chukwuemeka John Okonkwo, Male, DOB: 1989-05-14" or "Verification failed — check NIN number."</li>
+          <li><strong>Three action buttons:</strong>
+            <ul class="element-list" style="margin-top:8px;">
+              <li><strong>"Approve" (green):</strong> Artisan is approved. Their profile goes live immediately. An SMS is sent: "Congratulations! Your Nexplumb profile is live."</li>
+              <li><strong>"Request More Info" (amber):</strong> Opens a message template the admin can customise and send to the artisan asking for a clearer NIN photo, a better profile photo, etc.</li>
+              <li><strong>"Reject" (red):</strong> A mandatory rejection reason must be typed before confirming. The artisan is notified with the specific reason.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- AD-5 -->
+    <div id="ad5" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-ad">AD-5</div>
+        <div class="screen-card-header-text">
+          <h2>Analytics &amp; Reporting</h2>
+          <div class="url-line">URL: <span>admin.nexplumb.com/analytics</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>Business intelligence for the Nexplumb team — track growth, quality, revenue, and geographic coverage across all of Lagos. Used for weekly/monthly review meetings and investor reporting.</div>
+        <div class="section-title">Key Report Sections</div>
+        <ul class="element-list">
+          <li><strong>Platform Overview:</strong> Line charts for Total jobs, Revenue, New users, and Active artisans — filterable by day/week/month.</li>
+          <li><strong>Geographic Heat Map:</strong> A map of Lagos where each LGA is colour-coded by job density — dark teal = many jobs, light = few. Shows where Nexplumb is strong and where it needs more artisan supply.</li>
+          <li><strong>Artisan Quality:</strong> Rating distribution chart · Completion rate by trade · No-show rate by trade and area.</li>
+          <li><strong>Customer Behaviour:</strong> Repeat booking rate (% of customers who book more than once) · Review submission rate · Average job value trend.</li>
+          <li><strong>Revenue Breakdown:</strong> Stacked bar chart — Commission income · Platform fees · Subscription revenue · Materials GMV.</li>
+          <li><strong>Conversion Funnel:</strong> A funnel chart showing: Search → Profile view → Booking initiated → Payment completed. Each step shows the drop-off rate, helping the team identify where users are leaving the booking process.</li>
+          <li><strong>Export:</strong> Any report section can be downloaded as a CSV spreadsheet or formatted PDF report.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- AD-6 -->
+    <div id="ad6" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-ad">AD-6</div>
+        <div class="screen-card-header-text">
+          <h2>User Management</h2>
+          <div class="url-line">URL: <span>admin.nexplumb.com/users</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>The admin team can look up any customer or artisan account, view their history, and take account actions where necessary.</div>
+        <div class="section-title">User List and Actions</div>
+        <ul class="element-list">
+          <li><strong>Search:</strong> Search by name, phone number, or user ID across all customer and artisan accounts.</li>
+          <li><strong>User type filter:</strong> Toggle between "Customers" and "Artisans" tabs.</li>
+          <li><strong>User profile view:</strong> Clicking a user opens their full account page — all their jobs, payment history, reviews given/received, and account status.</li>
+          <li><strong>Account actions (all require a mandatory reason note):</strong> "Flag account" (adds a warning flag for monitoring), "Suspend account" (user loses access temporarily), "Ban account" (permanent removal), "Send message" (platform message to the user), "Download data" (NDPA compliance — exports all data held on that user).</li>
+          <li><strong>All actions logged:</strong> Every action an admin takes on a user account is permanently recorded in an audit log with the admin's name and timestamp.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         PHASE 2 BANNER
+    ═════════════════════════════════════════ -->
+    <div class="phase-banner phase-2-banner">
+      <div class="phase-banner-label phase-2-label">Phase 2 · Weeks 9–16</div>
+      <div class="phase-banner-text"><strong>Enhanced Platform.</strong> Supplier Portal, WhatsApp Bot, Price Estimator, Emergency Booking, and advanced artisan tools. These features deepen trust and grow the platform beyond the core MVP.</div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         SUPPLIER PORTAL DIVIDER
+    ═════════════════════════════════════════ -->
+    <div class="portal-divider">
+      <div class="portal-divider-line"></div>
+      <div class="portal-divider-badge badge-supplier">📦 Supplier Portal</div>
+      <div class="portal-divider-line"></div>
+    </div>
+
+    <!-- SP-1 -->
+    <div id="sp1" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-sp">SP-1</div>
+        <div class="screen-card-header-text">
+          <h2>Supplier Registration &amp; Verification</h2>
+          <div class="url-line">URL: <span>supplier.nexplumb.com/register</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>Material suppliers and importers (e.g. a company selling pipes and fittings, bathroom fixtures, or electrical supplies) register here to sell their products to artisans through the Nexplumb platform. The verification bar is higher than for individual artisans — a CAC (Corporate Affairs Commission) business registration number is required.</div>
+        <div class="section-title">Registration Fields</div>
+        <ul class="element-list">
+          <li><strong>Business Name:</strong> The official registered company name.</li>
+          <li><strong>CAC Registration Number:</strong> The unique number from Nigeria's Corporate Affairs Commission. This verifies the business is legitimate.</li>
+          <li><strong>Business Address:</strong> The company's office address in Nigeria.</li>
+          <li><strong>Warehouse Address:</strong> Where goods are stored and dispatched from (may be different from the office).</li>
+          <li><strong>Primary Contact:</strong> Full name + phone number + business email of the person managing the account.</li>
+          <li><strong>Product Categories:</strong> Multi-select checkboxes — "Pipes &amp; Fittings · Electrical Cables &amp; Components · Bathroom Fittings · Power Tools · Building Materials · Other".</li>
+          <li><strong>Business Bank Account:</strong> Bank name, account number, account name — for receiving payments.</li>
+          <li><strong>CAC Certificate Upload:</strong> File upload field accepting PDF or image. Shows a preview after upload.</li>
+          <li><strong>3 Product Photos:</strong> Initial product photos to help Nexplumb verify what the supplier actually sells. Drag-and-drop, up to 3 images.</li>
+          <li><strong>Submit button:</strong> "Submit for review". An admin will review the application within 48 hours. The supplier receives an email + phone notification when approved.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SP-2 -->
+    <div id="sp2" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-sp">SP-2</div>
+        <div class="screen-card-header-text">
+          <h2>Supplier Dashboard</h2>
+          <div class="url-line">URL: <span>supplier.nexplumb.com/dashboard</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>The approved supplier's business management centre — manage their product catalogue, fulfil artisan orders, track revenue, and build relationships with the Nexplumb artisan network.</div>
+        <div class="section-title">Sidebar Navigation</div>
+        <ul class="element-list">
+          <li><strong>Dashboard</strong> — overview metrics</li>
+          <li><strong>Products</strong> — catalogue management</li>
+          <li><strong>Orders</strong> — incoming artisan orders</li>
+          <li><strong>Artisan Requests</strong> — quote requests from artisans</li>
+          <li><strong>Earnings</strong> — revenue and payout history</li>
+          <li><strong>Reviews</strong> — artisan feedback on products</li>
+          <li><strong>Settings</strong> — business profile, bank details, notifications</li>
+        </ul>
+        <div class="section-title">Dashboard Overview Metrics</div>
+        <ul class="element-list">
+          <li><strong>Orders received today</strong> — with trend vs yesterday</li>
+          <li><strong>Pending orders to fulfil</strong> — with urgency signal if backlog building</li>
+          <li><strong>Revenue this month (₦)</strong> — gross and net (after Nexplumb commission)</li>
+          <li><strong>Active product listings</strong> — count with "Manage" link</li>
+          <li><strong>Average product rating</strong> — from artisan reviews</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SP-3 -->
+    <div id="sp-products" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-sp">SP-3</div>
+        <div class="screen-card-header-text">
+          <h2>Products Catalogue Management</h2>
+          <div class="url-line">URL: <span>supplier.nexplumb.com/products</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>Suppliers manage every product they sell. They can add new products, update prices, adjust stock levels, and request the special "Nexplumb Verified" quality badge for their best products.</div>
+        <div class="section-title">Products Table</div>
+        <ul class="element-list">
+          <li><strong>Columns:</strong> Product thumbnail image · Name · Category · Price (₦) · Stock count · Status (Active/Inactive) · Views this week · Orders this week.</li>
+          <li><strong>Toggle Active/Inactive:</strong> A simple on/off switch per row. Deactivated products are hidden from artisans instantly.</li>
+          <li><strong>"Add Product" button:</strong> Opens a multi-field form: Product name · Category · Brand · Detailed description · Price in ₦ · Stock count · Estimated delivery time · Multiple photo upload (up to 8 images, drag-and-drop).</li>
+          <li><strong>Bulk CSV Import:</strong> For suppliers with large catalogues, a "Import from CSV" button allows uploading a spreadsheet with all product details at once.</li>
+          <li><strong>"Request Nexplumb Verified badge":</strong> Per product — supplier submits the product for quality review by Nexplumb. If approved, an "NX Verified" badge appears on the product listing, indicating Nexplumb has quality-checked it.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SP-4 -->
+    <div id="sp-orders" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-sp">SP-4</div>
+        <div class="screen-card-header-text">
+          <h2>Orders Management</h2>
+          <div class="url-line">URL: <span>supplier.nexplumb.com/orders</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>When artisans order materials through Nexplumb for their jobs, those orders arrive here. The supplier fulfils them from this screen.</div>
+        <div class="section-title">Orders Table and Actions</div>
+        <ul class="element-list">
+          <li><strong>Order table columns:</strong> Order ID · Artisan name · Product(s) ordered · Quantity · Total amount · Delivery address · Order placed time · Status.</li>
+          <li><strong>Status lifecycle:</strong> New → Confirmed → Packing → Shipped → Delivered.</li>
+          <li><strong>Action buttons per order:</strong> "Confirm order" · "Mark as shipped" (prompts to enter tracking number) · "View artisan details" (area only — not personal contact info).</li>
+          <li><strong>Bulk status update:</strong> Supplier can select multiple orders with checkboxes and update all their statuses at once (e.g. mark 10 orders as "Shipped" simultaneously).</li>
+          <li><strong>Delivery tracking number field:</strong> When marking as shipped, the supplier enters a tracking number from their courier. This is displayed to the artisan in their materials order view.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         PHASE 2 ENHANCED FEATURES
+    ═════════════════════════════════════════ -->
+    <div class="portal-divider">
+      <div class="portal-divider-line"></div>
+      <div class="portal-divider-badge badge-phase">⚡ Phase 2 Enhanced Features</div>
+      <div class="portal-divider-line"></div>
+    </div>
+
+    <!-- CW-E1 -->
+    <div id="cw-e1" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-cw">CW-E1</div>
+        <div class="screen-card-header-text">
+          <h2>Price Estimator Tool</h2>
+          <div class="url-line">URL: <span>nexplumb.com/price-estimator</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>A free tool that helps customers understand how much a job should cost before they commit to booking. Reduces price shock and negotiation friction. Also one of the highest-traffic potential SEO pages — "how much does a plumber cost in Lagos" is a common search query.</div>
+        <div class="section-title">Tool Components</div>
+        <ul class="element-list">
+          <li><strong>Job Type Selector:</strong> Dropdown — "Burst pipe · Drain unblocking · Full bathroom fit · Tap replacement · Electrical wiring · ..." All major service types are listed.</li>
+          <li><strong>Location Selector:</strong> Choose an area within Lagos (dropdown or search). Prices vary by area.</li>
+          <li><strong>Complexity Selector:</strong> Three radio buttons — "Simple", "Standard", "Complex" — with examples shown for each: "Simple = single tap replacement. Complex = full bathroom renovation."</li>
+          <li><strong>Result Display:</strong> After selections are made, a price range bar appears: three labelled markers — "Budget: ₦5,000 · Typical: ₦12,000 · Premium: ₦22,000". The range is shown on a horizontal gradient bar.</li>
+          <li><strong>"Find artisans in this price range" CTA:</strong> Below the result — an orange button that takes the user to filtered search results showing artisans whose prices fall within the estimated range.</li>
+          <li><strong>SEO content below the tool:</strong> A section of editorial text: "How much does a plumber cost in Lagos?" — a 400-word article explaining the price ranges and what factors affect cost. This text is why Google will send traffic to this page.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CW-E2 -->
+    <div id="cw-e2" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-cw">CW-E2</div>
+        <div class="screen-card-header-text">
+          <h2>Emergency Booking Page</h2>
+          <div class="url-line">URL: <span>nexplumb.com/emergency</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>The fastest possible path to a confirmed booking for customers facing an urgent situation — burst pipe, power fault, flooding. Every second counts. This page strips out everything non-essential and gets the customer to a confirmed booking in the fewest possible clicks.</div>
+        <div class="section-title">Emergency Page Components</div>
+        <ul class="element-list">
+          <li><strong>Urgency banner:</strong> Full-width red/orange banner at the very top: "EMERGENCY BOOKING — Available 24 hours a day, 7 days a week." No navbar clutter — streamlined page.</li>
+          <li><strong>Simplified form (just 2 fields):</strong> "What is the emergency?" (dropdown with common emergencies: "Burst pipe · No power · Flooding · Gas leak · Locked out") + "Your area in Lagos" (auto-detect or type).</li>
+          <li><strong>"Find Emergency Artisans NOW" button:</strong> One large full-width orange button. Triggers priority matching — the system searches for available artisans within 5km, sorted by nearest first.</li>
+          <li><strong>Results shown immediately below:</strong> Only artisans who are currently available AND within 5km are shown. Sorted by nearest. Results auto-refresh every 60 seconds.</li>
+          <li><strong>For logged-in users:</strong> If the customer is already logged in, they can confirm an emergency booking in just 2 clicks — artisan is pre-selected, address is pre-filled from their account.</li>
+          <li><strong>Emergency phone number:</strong> Prominently displayed at the top: "Rather call? 0800-NEXPLUMB". For customers who prefer speaking to a human.</li>
+          <li><strong>30% premium label:</strong> Clearly shown on the artisan cards — "Emergency rate applies (+30%). Your money is still protected by escrow."</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- WHATSAPP BOT -->
+    <div id="whatsapp" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-cw">P2-06</div>
+        <div class="screen-card-header-text">
+          <h2>WhatsApp Bot Flow</h2>
+          <div class="url-line">URL: <span>WhatsApp Business API — wa.me/[Nexplumb Business Number]</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>A conversational booking experience entirely within WhatsApp. For customers who cannot or prefer not to download the app, and for artisans with limited smartphone data. WhatsApp is used by 95%+ of Nigerian internet users daily — meeting customers where they already are is a massive advantage.</div>
+        <div class="section-title">Customer Booking Flow via WhatsApp</div>
+        <ol class="step-list">
+          <li><strong>Customer sends any message</strong> to Nexplumb's WhatsApp number. The bot responds with a greeting: "Welcome to Nexplumb! I can help you book a verified artisan. Reply with what you need — e.g. 'plumber' or 'electrician'."</li>
+          <li><strong>Customer replies with their trade need</strong> (e.g. "plumber"). Bot asks: "Great! Which area of Lagos are you in?"</li>
+          <li><strong>Customer replies with area</strong> (e.g. "Yaba"). Bot shows top 3 available artisans in that area with name, rating, price range, and a numbered choice. "Reply '1', '2', or '3' to see more."</li>
+          <li><strong>Customer picks an artisan</strong> (e.g. "1"). Bot sends the artisan's mini-profile and asks: "When do you need them? Reply with a time or say 'Now'."</li>
+          <li><strong>Customer selects a time.</strong> Bot sends a booking summary and a Paystack payment link. "Tap this link to pay securely via card, transfer, or USSD. Your money is protected until the job is done."</li>
+          <li><strong>Payment confirmed.</strong> Bot sends: "Booking confirmed! Reference NX-2024-00847. Your artisan Chukwuemeka will arrive at the time you selected. I'll send you updates here."</li>
+          <li><strong>Status updates via WhatsApp:</strong> "Chukwuemeka is on his way (ETA ~15 min)." → "Chukwuemeka has arrived." → "Job marked complete. Tap to confirm and release payment." → "Payment released. Thank you for using Nexplumb! Please rate your experience (reply 1–5)."</li>
+        </ol>
+        <div class="section-title">Artisan Alerts via WhatsApp</div>
+        <ul class="element-list">
+          <li><strong>New job alert:</strong> Artisan receives a WhatsApp message: "New job near you! Plumbing in Yaba · ₦8,000–₦12,000. Reply YES to accept or NO to pass."</li>
+          <li><strong>If YES:</strong> Bot sends the customer's area and time. "Job confirmed. Customer is at [area]. Show up by [time]. Safe travels!"</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         PHASE 3 BANNER
+    ═════════════════════════════════════════ -->
+    <div class="phase-banner phase-3-banner">
+      <div class="phase-banner-label phase-3-label">Phase 3 · Month 4+</div>
+      <div class="phase-banner-text"><strong>Ecosystem Expansion.</strong> Enterprise B2B portal, artisan financial identity and credit products, manufacturer network. Nexplumb becomes infrastructure for Nigeria's entire artisan economy.</div>
+    </div>
+
+    <div class="portal-divider">
+      <div class="portal-divider-line"></div>
+      <div class="portal-divider-badge badge-b2b">🏢 Enterprise &amp; Finance Portals</div>
+      <div class="portal-divider-line"></div>
+    </div>
+
+    <!-- EP-1 -->
+    <div id="ep1" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-ep">EP-1</div>
+        <div class="screen-card-header-text">
+          <h2>Enterprise B2B Portal</h2>
+          <div class="url-line">URL: <span>enterprise.nexplumb.com</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>For property managers, estate developers, hotel facilities teams, and large organisations that need artisan services regularly and at scale. Instead of individual one-off bookings, they get SLA contracts, dedicated artisan pools, bulk job scheduling, and monthly invoicing — a fully professional B2B product.</div>
+        <div class="section-title">Enterprise Dashboard Components</div>
+        <ul class="element-list">
+          <li><strong>Contract Overview:</strong> Active SLA contracts · Total jobs this month · Spend vs monthly budget (a budget tracker) · Issue rate (% of jobs that resulted in a dispute or problem).</li>
+          <li><strong>Multi-Property Management:</strong> Enterprise clients can create and name multiple properties in their account (e.g. "Victoria Gardens Estate, Block A", "Lekki Phase 2 Hotel, Lagos"). Each property is managed separately — with its own job history, preferred artisan pool, and monthly spend tracker.</li>
+          <li><strong>Bulk Job Request:</strong> Submit service needs for multiple units simultaneously. "Building A requires: 12 electrical inspections, 3 plumbing checks, 2 carpentry repairs — scheduled for next Tuesday." One form generates multiple job requests.</li>
+          <li><strong>Dedicated Artisan Pool:</strong> Enterprise clients curate a list of preferred artisans for each property. Jobs are assigned to this pool first before any general matching. Artisans in the pool know they have guaranteed work.</li>
+          <li><strong>Monthly Invoice:</strong> Auto-generated PDF invoice at the end of each billing period covering all jobs completed. Includes: job list, dates, artisan names, individual amounts, and total. Sent by email + downloadable from the dashboard.</li>
+          <li><strong>SLA Dashboard:</strong> Performance metrics per artisan and per property — average response time, completion rate, average rating, and number of issues — shown as a table with trend indicators. Used for quarterly artisan performance reviews.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FP-1 -->
+    <div id="fp1" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-fp">FP-1</div>
+        <div class="screen-card-header-text">
+          <h2>Artisan Finance Portal</h2>
+          <div class="url-line">URL: <span>app.nexplumb.com/artisan/finance</span></div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Purpose</strong>One of the most ambitious and important features of the entire platform. An artisan who has completed many jobs on Nexplumb has built a verified income record. This portal converts that record into access to credit — loans, buy-now-pay-later for materials, and financial identity. It is the "bank account" moment for artisans who have never had one.</div>
+        <div class="section-title">Finance Portal Components</div>
+        <ul class="element-list">
+          <li><strong>"Your Nexplumb Financial Identity" panel:</strong> A visual summary card showing: jobs completed (e.g. 47 jobs), total earnings (e.g. ₦312,000), completion rate (e.g. 96%), average rating (e.g. 4.7), and Nexplumb member duration. This is presented beautifully — it is something the artisan can feel proud of.</li>
+          <li><strong>Nexplumb Credit Score:</strong> A score from 0 to 850 (like a credit score) generated by Nexplumb based on platform activity. Displayed as a circular dial or score card. A short explanation: "Your score is based on your completed jobs, earnings, ratings, and consistency on Nexplumb." Higher scores unlock more credit.</li>
+          <li><strong>"Apply for Material Credit" section:</strong> Powered by a fintech partner (e.g. Migo, Carbon, or FairMoney). Shows the artisan's pre-calculated credit limit: "Based on your 47 completed jobs and ₦312,000 in earnings, you qualify for up to ₦50,000 in material credit." A single "Apply now" button starts the application — most details are pre-filled from Nexplumb's records.</li>
+          <li><strong>BNPL (Buy Now Pay Later) Toggle:</strong> On material orders from the supplier portal, artisans with sufficient credit score see a "Pay in 3 installments from earnings" option. This means repayments are automatically deducted from their Nexplumb wallet over the next 3 payouts.</li>
+          <li><strong>Loan History:</strong> A table showing any active or past loans — amount drawn, repayment schedule, amount outstanding, and next repayment date. All tied to the artisan's job completion — no jobs = repayment paused.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ════════════════════════════════════════
+         SCREEN STATES
+    ═════════════════════════════════════════ -->
+    <div class="portal-divider">
+      <div class="portal-divider-line"></div>
+      <div class="portal-divider-badge badge-customer">📋 Design Standards</div>
+      <div class="portal-divider-line"></div>
+    </div>
+
+    <div id="screen-states" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-cw">STD-1</div>
+        <div class="screen-card-header-text">
+          <h2>Five Required Screen States</h2>
+          <div class="url-line">Every screen across all portals must be designed in all 5 states</div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Why This Matters</strong>Real users encounter every possible situation — slow internet, empty accounts, error messages, successful completions. If a screen is only designed for the "perfect" state, it will look broken or confusing in every other situation. Every screen must handle all 5 states.</div>
+        <table class="data-table">
+          <thead><tr><th>State</th><th>When It Occurs</th><th>What It Must Show</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Default</strong></td><td>Normal loaded state with real data</td><td>The primary design — always the first to complete. Shows real representative content, not placeholder "Lorem ipsum" text.</td></tr>
+            <tr><td><strong>Loading</strong></td><td>While data is being fetched from the server</td><td>Skeleton loaders — gray animated placeholder shapes that match the shape of the real content. Never a blank white page. Never just a spinning circle by itself.</td></tr>
+            <tr><td><strong>Empty</strong></td><td>No data to display (new user with no bookings, search with no results, cleared filters)</td><td>An illustration relevant to the context + a descriptive headline + a primary CTA button. Example: empty bookings tab shows an illustration of a calendar + "No bookings yet" + "Find an artisan" button. Never just "No data found."</td></tr>
+            <tr><td><strong>Error</strong></td><td>Server error, network lost, or invalid data returned</td><td>A red banner at the top of the relevant section OR an inline red border on the problematic field. The error message must describe specifically what went wrong. A "Try again" button is always included. Never just "Something went wrong."</td></tr>
+            <tr><td><strong>Success</strong></td><td>After an action completes — booking confirmed, payment sent, review submitted, profile updated</td><td>A teal animated checkmark, a summary of what just happened, and a clear next step offered to the user. The user should never have to guess whether their action worked.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ACCESSIBILITY -->
+    <div id="accessibility" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-ad">STD-2</div>
+        <div class="screen-card-header-text">
+          <h2>Accessibility Requirements</h2>
+          <div class="url-line">Non-negotiable standards for all screens</div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Why This Matters</strong>Accessibility is not optional. It ensures Nexplumb can be used by people with visual impairments, colour blindness, motor limitations, or those who navigate by keyboard. It is also a legal standard (WCAG AA compliance).</div>
+        <ul class="element-list">
+          <li><strong>Colour contrast:</strong> All body text must have a minimum 4.5:1 contrast ratio against its background. Large headings: minimum 3:1. Use a contrast checker tool to verify every colour combination.</li>
+          <li><strong>Keyboard navigation:</strong> Every interactive element (buttons, links, form fields, dropdown menus) must be reachable and operable using only the keyboard (Tab key to move, Enter to click, Space for checkboxes).</li>
+          <li><strong>Focus ring:</strong> Every interactive element must show a visible focus indicator when selected via keyboard — a 2px solid teal (#2A9D8F) outline with 2px offset. Never remove the default focus ring without replacing it with a custom one.</li>
+          <li><strong>Alt text:</strong> Every image must have a descriptive alt text attribute. Decorative images (purely visual, no information) should have an empty alt="" attribute so screen readers skip them.</li>
+          <li><strong>Form labels:</strong> Every input field must have a visible &lt;label&gt; element associated with it — not just placeholder text. Placeholder text disappears when typing begins and is never a substitute for a label.</li>
+          <li><strong>Error messages:</strong> Must describe the problem in text — never use colour alone to indicate an error. "This field is required" in red text is correct. Just turning the field border red is not enough.</li>
+          <li><strong>Maps alternative:</strong> Every map view must have a "Switch to list view" button accessible to users without JavaScript or GPS access. Maps should never be the only way to access information.</li>
+          <li><strong>Minimum touch target size:</strong> All clickable/tappable elements must be at least 48×48px. Small icon buttons should have invisible padding to reach this minimum.</li>
+          <li><strong>Minimum text size:</strong> No body text smaller than 14px on web. No captions smaller than 12px.</li>
+          <li><strong>Reduced motion:</strong> All animations must be turned off or reduced when the user has "reduce motion" enabled in their operating system accessibility settings.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SEO -->
+    <div id="seo" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-cw">STD-3</div>
+        <div class="screen-card-header-text">
+          <h2>SEO &amp; Performance Standards</h2>
+          <div class="url-line">How Nexplumb wins on Google and loads fast in Lagos</div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Why This Matters</strong>Nigeria has over 100 million internet users. When someone Googles "plumber near me Lagos", Nexplumb should appear at the top of the results. Good SEO is not just about keywords — it is about fast load times, structured content, and real information that users find valuable. A slow page loses both the Google ranking and the human visitor.</div>
+        <table class="data-table">
+          <thead><tr><th>Target Search Query</th><th>Page Responsible</th><th>Design Requirement</th></tr></thead>
+          <tbody>
+            <tr><td>"plumber near me Lagos"</td><td>CW-1 Homepage + CW-2 Search Results</td><td>The phrase "Plumbers in Lagos" must appear as a real H1 or H2 heading with actual artisan data below it. The user's location should be auto-detected and shown in search results.</td></tr>
+            <tr><td>"how much does a plumber cost in Nigeria"</td><td>CW-E1 Price Estimator</td><td>Interactive price guide using real platform data. Results must be shareable. A 400-word article on pricing must appear below the tool.</td></tr>
+            <tr><td>"[artisan name] plumber Lagos"</td><td>CW-3 Artisan Profile</td><td>Artisan's name must appear in the page &lt;title&gt; tag and in the main H1. Google rich snippet schema for reviews must be implemented so star ratings appear in search results.</td></tr>
+            <tr><td>"emergency plumber Lagos"</td><td>CW-E2 Emergency Page</td><td>Page must load in under 2 seconds. Phone number must appear above the fold. Trust signals must be immediately visible.</td></tr>
+          </tbody>
+        </table>
+        <div class="section-title">Performance Budget</div>
+        <ul class="element-list">
+          <li><strong>Homepage load time:</strong> Under 3 seconds on a 4G Nigerian connection. Google PageSpeed mobile score target: 75 or higher.</li>
+          <li><strong>Images:</strong> Artisan profile photos served at exactly the size they are displayed (80×80px thumbnails for cards). Lazy-loaded — only load when the image is about to scroll into view.</li>
+          <li><strong>Maps:</strong> Do not load the map on page load. Show a "Load map" button first. Only load the map JavaScript and tiles when the user clicks. This saves significant bandwidth.</li>
+          <li><strong>Fonts:</strong> Load the system font first, then load the custom font asynchronously (non-blocking). Users see text immediately instead of waiting for a font to download.</li>
+          <li><strong>All images:</strong> Must have explicit width and height attributes set in HTML. This prevents "layout shift" — the jarring jump that happens when images load and push content down.</li>
+          <li><strong>Animations:</strong> CSS-only animations only on critical pages. No heavy JavaScript animation libraries on the homepage or booking flow.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- HANDOFF -->
+    <div id="handoff" class="screen-card">
+      <div class="screen-card-header">
+        <div class="screen-id-badge id-ad">STD-4</div>
+        <div class="screen-card-header-text">
+          <h2>Design Handoff Standards</h2>
+          <div class="url-line">How to hand designs from Figma to developers correctly</div>
+        </div>
+      </div>
+      <div class="screen-card-body">
+        <div class="purpose-block"><strong>Why This Matters</strong>A design that is not properly handed off is half-built. Developers need exact specifications for how things change at different screen sizes, what happens on hover, and how the page behaves when data is loading. This section defines what must be included for every screen before it is passed to engineering.</div>
+        <div class="section-title">Figma File Organisation</div>
+        <ul class="element-list">
+          <li><strong>Separate Figma file per portal:</strong> Nexplumb_Web_Customer · Nexplumb_Web_Artisan · Nexplumb_Web_Admin · Nexplumb_Web_Supplier. Keeping them separate prevents files becoming unmanageably large.</li>
+          <li><strong>Three frames per screen:</strong> Every screen must exist as three separate frames side by side: "[Screen ID] Desktop 1280px", "[Screen ID] Tablet 768px", "[Screen ID] Mobile Web 375px". Engineers need all three to build responsively.</li>
+          <li><strong>Frame naming convention:</strong> Always use the Screen ID from this document. E.g.: "CW-2 Search Results / Desktop 1280".</li>
+          <li><strong>Auto Layout throughout:</strong> All frames and component groups must use Figma Auto Layout (not fixed-position). This translates to CSS Flexbox/Grid in the codebase and ensures designs are actually buildable.</li>
+        </ul>
+        <div class="section-title">Mandatory Annotations Per Screen</div>
+        <ul class="element-list">
+          <li><strong>Breakpoint behaviour notes:</strong> Written annotations on the frame: "At 768px: left filter sidebar collapses into a drawer opened by a filter button." Never assume the developer knows what to do at different sizes.</li>
+          <li><strong>Hover states:</strong> Every interactive element (buttons, cards, links, nav items) must have its hover state annotated or shown in an adjacent frame variant. "On hover: card shadow deepens, border changes to teal."</li>
+          <li><strong>Sticky behaviour:</strong> "This navbar is position:sticky top:0. Its z-index must be higher than the map layer below." Developers need explicit instructions for sticky elements.</li>
+          <li><strong>Animations:</strong> "Artisan map pin transition duration: 0.5 seconds ease. Position updates every 10 seconds." Be specific — "smooth" is not a specification.</li>
+          <li><strong>Grid specification:</strong> State which grid template applies at each breakpoint — e.g. "Desktop: CSS Grid 12 columns, 24px gutters. Mobile: 4 columns, 16px gutters."</li>
+          <li><strong>API dependencies note:</strong> "This screen requires: /api/artisans/search (with filters), /api/user/location (GPS)." This helps engineers understand what backend work is needed before the screen can be built.</li>
+          <li><strong>Real-time requirements:</strong> "This screen updates live via WebSocket. Artisan pin position updates every 10–15 seconds." Makes it clear to engineering that a persistent connection is needed.</li>
+          <li><strong>Third-party integrations:</strong> List any external services used: "Paystack (payments) · Google Maps API (map + pins) · NIMC API (NIN verification) · Twilio (WhatsApp messages) · Termii (SMS OTP)."</li>
+        </ul>
+        <div class="section-title">Notion Handoff Card — Required Fields for Every Screen</div>
+        <table class="data-table">
+          <thead><tr><th>Field</th><th>Example</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Screen ID + Portal</strong></td><td>CW-2 · Customer Web Portal</td></tr>
+            <tr><td><strong>User story</strong></td><td>"As a customer, I can filter search results by rating and distance so that I find the best artisan near me quickly."</td></tr>
+            <tr><td><strong>Breakpoints designed</strong></td><td>✅ Desktop 1280px · ✅ Tablet 768px · ✅ Mobile Web 375px</td></tr>
+            <tr><td><strong>States designed</strong></td><td>✅ Default · ✅ Loading · ✅ Empty · ✅ Error · ✅ Success</td></tr>
+            <tr><td><strong>API dependencies</strong></td><td>/api/artisans/search · /api/user/location · /api/filters/options</td></tr>
+            <tr><td><strong>Real-time?</strong></td><td>No (search results are static; only Map View needs live updates)</td></tr>
+            <tr><td><strong>Third-party integrations</strong></td><td>Google Maps API (for map view pins and route display)</td></tr>
+            <tr><td><strong>Accessibility notes</strong></td><td>Map must have "Switch to list" button. All filter checkboxes must be keyboard operable. Results count must be announced to screen readers on filter change.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div><!-- end .content-wrap -->
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <p>NEXPLUMB · Screen Instruction Guide · Version 1.0 · Confidential<br/>
+    <span>For Design, Product, and Engineering Teams Only</span><br/>
+    Companion to: Mobile App UX Document v1.0 · Web App UX Document v1.0 · PRD v1.0</p>
+  </div>
+
+</div><!-- end .main -->
+
+<!-- Scroll to top -->
+<a href="#" class="scroll-top" title="Back to top">↑</a>
+
+</body>
+</html>
